@@ -1,0 +1,766 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport"
+content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+
+  <meta name="theme-color" content="#1F4D3A" />
+  <title id="docTitle">클럽 수첩</title>
+
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="stylesheet" href="./styles.css" />
+
+<link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@fullcalendar/google-calendar@6.1.11/index.global.min.js"></script>
+
+
+</head>
+<body>
+  <header class="topbar">
+  <button class="icon-btn" id="btnBack" aria-label="뒤로" hidden>←</button>
+
+  <div class="brand">
+    <img id="clubLogoSmall" class="brand-logo" alt="로고" src="./logo.png" />
+    <div class="brand-title">
+      <div id="districtText" class="brand-sub">한동대학교 최고경영자과정</div>
+      <div id="clubNameText" class="brand-main">한 동 회</div>
+    </div>
+  </div>
+
+<!-- 로그인 사용자 이름 -->
+<div id="loginUserName" class="login-user" hidden>
+  <span id="loginUserNameText"></span>
+</div>
+
+
+
+<!-- 관리자 버튼 (아이콘만) -->
+<button id="btnAdmin" class="icon-btn" aria-label="관리자">
+  ⚙
+</button>
+
+
+
+
+
+
+
+
+
+
+<!-- 로그아웃(전원 아이콘) -->
+<button class="icon-btn" id="btnLogout" aria-label="로그아웃" title="로그아웃" hidden>
+  <svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M11 2h2v10h-2V2zm6.36 3.64 1.41 1.41A9 9 0 1 1 5.23 7.05l1.41-1.41A7 7 0 1 0 17.36 5.64z"/>
+  </svg>
+</button>
+
+</header>
+
+
+ <main class="container">
+
+  <!-- ✅ 자동로그인 로딩 화면(BOOT) : 딱 1개만 -->
+  <section id="screenBoot" class="screen boot" hidden>
+    <div class="boot-card">
+      <img class="boot-logo" src="./logo.png" alt="로고" />
+	<div class="boot-title" id="bootTitle">클럽명</div>
+	<div class="boot-sub" id="bootSub">회원수첩</div>
+
+
+      <div class="boot-loading">
+        <span class="spinner" aria-hidden="true"></span>
+        <span>로딩중...</span>
+      </div>
+
+      <div class="boot-tip">잠시만요, 데이터를 불러오는 중입니다.</div>
+    </div>
+  </section>
+
+  <!-- 로그인 -->
+
+<section id="screenLogin" class="screen login-bg handong">
+
+
+
+<!-- ✅ 설치 배너(안드로이드 크롬에서만 자동 표시) -->
+<div id="installBar" style="display:none; margin-bottom:12px;">
+  <button id="btnInstallBar" type="button">
+    앱 설치하기
+  </button>
+</div>
+
+
+
+
+
+    <div class="card hero">
+
+
+
+
+
+      <!-- ✅ hero-text는 딱 1개만 -->
+      <div class="hero-text">
+        <div class="hero-title">
+          	<div class="title-main" id="loginTitleMain">클럽명</div>
+	<div class="title-sub" id="loginTitleSub">회원수첩</div>
+
+        </div>
+
+        <div class="hero-desc">
+          승인된 회원만 접속 가능합니다.<br />
+          휴대폰번호(숫자만)와 접속코드를 입력해주세요.
+        </div>
+      </div>
+
+      <div class="form">
+        <label class="label">휴대폰번호</label>
+        <input id="inputPhone" class="input" inputmode="numeric" placeholder="01012345678" />
+
+        <label class="label">접속코드</label>
+        <input
+  id="inputCode"
+  class="input"
+  type="password"
+  inputmode="numeric"
+  placeholder="폰번호4자리"
+/>
+
+
+        <label class="checkline">
+          <input id="keepLogin" type="checkbox" />
+          <span>로그인 상태 유지</span>
+        </label>
+
+        <button id="btnLogin" class="btn primary">로그인</button>
+
+        
+
+
+
+        
+
+        <div id="loginError" class="error" hidden></div>
+      </div>
+    </div>
+
+
+<!-- 🔽 로그인 카드 밖 액션 영역 -->
+<div class="login-actions">
+
+  <!-- ✅ 설치/안내 메시지 위치를 여기로 (항상 눈에 띔) -->
+  <div id="installHint" class="hint" hidden></div>
+
+
+
+
+  <div class="install-row">
+    <button id="btnInstallAndroid" class="btn install">
+      안드로이드 앱 설치
+    </button>
+    <button id="btnInstallIOS" class="btn install ghost">
+      아이폰 설치방법
+    </button>
+  </div>
+
+  <button id="btnHardReload" class="reload-link">
+    업데이트 문제가 있나요? 새로고침
+  </button>
+</div>
+
+
+
+  </section>
+
+  <!-- 이하 홈/멤버/공지/텍스트는 그대로 -->
+    <!-- 홈 -->
+  <section id="screenHome" class="screen" hidden>
+
+<div class="brand-hero">
+  <div class="brand-hero-title" id="sloganText">슬로건</div>
+
+  <div class="brand-hero-divider"></div>
+
+  <div class="brand-hero-sub">
+    <div class="brand-hero-main" id="genClubText">제00대 클럽명</div>
+    <div class="brand-hero-desc" id="districtText2">지구명</div>
+  </div>
+</div>
+ 
+
+    <div class="grid">
+      <button class="tile hero-tall" data-nav="members">
+        <div class="tile-title">회원명부</div>
+        <div class="tile-desc">회원검색 · 연락처 상세보기 · 통화 · 문자 </div>
+      </button>
+      <button class="tile" data-nav="announcements">
+        <div class="tile-title">공지사항</div>
+        <div class="tile-desc">관리자 공지 확인</div>
+      </button>
+      <button class="tile" data-nav="purpose" hidden>
+        <div class="tile-title">한동회 모임목적</div>
+        <div class="tile-desc">목적</div>
+      </button>
+      <button class="tile" data-nav="bylaws">
+        <div class="tile-title">
+  <span class="gisuPrefix"></span>회칙
+</div>
+        <div class="tile-desc">회칙/규정</div>
+      </button>
+
+
+
+
+  <button class="tile" data-nav="calendar">
+
+  <div class="tile-title">
+  <span class="gisuPrefix"></span>일정표
+</div>
+  <div class="tile-desc">월별 일정 확인</div>
+</button>
+
+
+
+       <!-- 🔵 라이오니즘 -->
+<button class="tile" data-nav="lionism" hidden>
+  <div class="tile-title">한동대학교...</div>
+  <div class="tile-desc">대학홈페이지</div>
+</button>
+
+
+
+
+<button class="tile tile-image" data-nav="song" hidden>
+  <div class="tile-title">교가/로고송</div>
+  <div class="tile-desc">약보</div>
+</button>
+
+<!-- 🔵 의전 -->
+<button class="tile" data-nav="ceremony">
+  <div class="tile-title">초금회 소개</div>
+  <div class="tile-desc">초금회 연혁</div>
+</button>
+
+
+    </div>
+
+    <div class="card mt16">
+      <div class="card-header">
+        <div class="card-title">최신 공지</div>
+        <button class="link" data-nav="announcements">전체보기</button>
+      </div>
+      <div id="latestAnnouncements" class="list"></div>
+    </div>
+
+<!-- ✅ 회관/연락처/카피 (홈 하단) -->
+    <div class="club-footer">
+      <div id="hallAddress"></div>
+      <div id="hallPhone"></div>
+      <div id="copyrightText"></div>
+    </div>
+
+
+
+
+  </section>
+
+<!-- 회원 -->
+<section id="screenMembers" class="screen" hidden>
+
+<div class="membersSticky">
+
+  <div class="card-header">
+    <div class="card-title" style="display:flex;align-items:center;gap:6px;">
+      회원명부
+
+<button id="btnClassFilter" class="class-filter-btn" type="button" hidden>
+  기수전체 ▼
+</button>
+
+<button id="btnMembersRefresh" class="btn-blue small" type="button" hidden>
+  <span style="margin-right:4px;">↻</span>내기수보기
+</button>
+    </div>
+
+    <div class="pill" id="memberCountPill">0명</div>
+  </div>
+
+  <input
+    id="memberSearch"
+    class="input"
+    placeholder="이름 / 직위 / 그룹 / 휴대폰 검색"
+  />
+
+</div>
+
+<div class="card">
+  <div id="memberList" class="list mt12"></div>
+</div>
+
+</section>
+
+
+  <!-- 공지 -->
+  <section id="screenAnnouncements" class="screen" hidden>
+    <div class="card">
+      <div class="card-header">
+        <div class="card-header" style="display:flex;justify-content:space-between;align-items:center;">
+  <div class="card-title">공지사항</div>
+  <button id="btnAnnRefresh" class="icon-btn">⟳</button>
+</div>
+
+
+
+      </div>
+      <div id="annList" class="list"></div>
+    </div>
+  </section>
+
+<section id="screenCalendar" class="screen" hidden>
+  <div class="card">
+
+
+
+<div class="calendar-header">
+  <h2 id="calendarTitle">
+    초금회 공식<span class="gisuPrefix"></span>일정표
+  </h2>
+  <button id="btnCalendarRefresh" class="icon-btn">⟳</button>
+</div>
+
+<!-- 🔥 범례 추가 -->
+<div class="calendar-legend">
+  <span class="legend-all">● 전체일정</span>
+  <span class="legend-class">● 기수일정</span>
+</div>
+
+<!-- 🔥 로딩 -->
+<div id="calendarLoading" style="
+  text-align:center;
+  padding:40px 0;
+  color:#64748b;
+  font-size:15px;
+">
+  일정을 불러오는 중....
+</div>
+
+<!-- 🔥 캘린더 -->
+<div id="calendar"></div>
+  </div>
+</section>
+
+
+
+
+<section id="screenEvents" class="screen" hidden>
+  <div class="card">
+    <h3>클럽일정표</h3>
+    <div id="eventsList">불러오는 중...</div>
+  </div>
+</section>
+
+
+
+
+  <!-- 텍스트 -->
+  <section id="screenText" class="screen" hidden>
+
+
+    <div class="card">
+<div class="card-header">
+  <div class="card-title" id="textTitle">제목</div>
+
+  <!-- ✅ 회칙 화면에서만 보일 버튼 -->
+  <a id="btnBylawsPdf" class="pdf-btn" href="#" target="_blank" rel="noopener" hidden>원본PDF</a>
+</div>
+
+
+      <div id="textBody" class="prose"></div>
+    </div>
+  </section>
+
+
+
+<!-- 🔵 마이페이지 -->
+<section id="screenMyPage" class="screen" hidden>
+
+  <div class="card mypage-card">
+
+    <div class="card-header">
+      <div class="card-title">마이페이지</div>
+    </div>
+
+    <div class="mypage-center">
+      <img id="myPhoto" class="modal-photo" />
+    </div>
+
+    <div class="modal-name-row">
+      <div class="modal-name" id="myName"></div>
+      <span class="badge" id="myPosition"></span>
+      <span class="badge" id="myGroup"></span>
+    </div>
+
+    <div class="modal-address-row">
+      <button id="myMap" class="a-btn primary" type="button">📍 지도</button>
+      <div class="modal-workplace" id="myWorkplace"></div>
+    </div>
+
+    <div class="modal-engname" id="myEngName"></div>
+    <div class="modal-memberinfo" id="myMemberInfo"></div>
+    <div class="modal-recommender" id="myRecommender"></div>
+    <div class="modal-phone" id="myPhone"></div>
+
+    <div class="modal-actions">
+      <button id="btnHallCall" class="a-btn primary">☎ 앱관리자 통화</button>
+      <button id="btnMyInbox" class="a-btn">📩 메시지함</button>
+    </div>
+
+
+
+<!-- 🔐 비밀번호 변경 (iOS 스타일 접힘 패널) -->
+<div class="pw-section">
+
+  <button id="btnPwToggle" class="pw-toggle">
+    비밀번호 변경
+    <span class="pw-arrow">›</span>
+  </button>
+
+  <div id="pwPanel" class="pw-panel" hidden>
+
+    <div class="pw-row">
+      <label>현재</label>
+      <input type="password" id="oldPw" placeholder="현재접속코드">
+    </div>
+
+    <div class="pw-row">
+      <label>새 비번</label>
+      <input type="password" id="newPw" placeholder="새접속코드(4자리 숫자만)">
+    </div>
+
+    <div class="pw-row">
+      <label>확인</label>
+      <input type="password" id="newPw2" placeholder="다시 입력">
+    </div>
+
+    <div class="pw-save-row">
+      <button id="btnChangePw" class="pw-save">변경</button>
+    </div>
+
+  </div>
+
+</div>
+
+
+
+    <button class="btn primary" onclick="popNav()">닫기</button>
+
+  </div>
+</section>
+
+
+<!-- 🔵 라이오니즘 화면 -->
+<section id="screenLionism" class="screen" hidden>
+
+
+  <div class="card">
+    <div class="card-title">라이오니즘</div>
+    <div class="prose">라이오니즘 내용 준비중...</div>
+  </div>
+</section>
+
+
+<section id="screenCeremony" class="screen" hidden>
+
+  <div class="card">
+    <div class="intro-header">
+      <div class="card-title">초금회 소개</div>
+      <button class="intro-close" onclick="popNav()">✕</button>
+    </div>
+    <!-- ✅ 단체사진 -->
+    <div class="intro-photo-wrap">
+      <img src="./group.jpg" class="intro-photo" onclick="openImgModal('./group.jpg')" />
+    </div>
+
+    <!-- ✅ 소개글 -->
+<div class="intro-text" id="introText"></div>
+
+  </div>
+
+</section>
+
+
+
+
+
+
+<!-- ===== 프로필 확대 팝업 ===== -->
+<div id="profileModal" class="modal" hidden>
+
+  <div class="modal-backdrop" onclick="closeProfile()"></div>
+  <div class="modal-card">
+    <img id="modalPhoto" class="modal-photo" />
+
+<div class="modal-name-row">
+  <div class="modal-name" id="modalName"></div>
+</div>
+
+<div class="profile-badges" id="modalBadges"></div>
+
+
+<!-- 주소 + 지도 버튼 -->
+<div class="modal-address-row">
+  <button id="btnMap" class="a-btn primary" type="button">📍 지도</button>
+  <div class="modal-workplace" id="modalWorkplace"></div>
+</div>
+
+<!-- 🔽 추가 정보 -->
+<div class="modal-engname" id="modalEngName"></div>
+
+<div class="modal-memberinfo" id="modalMemberInfo"></div>
+
+<div class="modal-recommender" id="modalRecommender"></div>
+
+
+<div class="modal-phone" id="modalPhone"></div>
+
+
+    <div class="modal-actions">
+      <a id="modalCall" class="a-btn primary">📞 통화</a>
+      <a id="modalSms" class="a-btn">💬 문자</a>
+    </div>
+
+    <button class="modal-close" onclick="closeProfile()">닫기</button>
+  </div>
+</div>
+
+
+<!-- ===== 공지 상세 모달 ===== -->
+<div id="annModal" class="modal" hidden>
+  <div class="modal-backdrop" onclick="closeAnnModal()"></div>
+  <div class="modal-card" style="width:min(94vw,560px);text-align:left;">
+    <div style="font-weight:950;font-size:18px;" id="annModalTitle"></div>
+    <div style="color:#64748b;font-size:13px;margin-top:6px;" id="annModalMeta"></div>
+    <div style="
+  margin-top:12px;
+  white-space:pre-wrap;
+  line-height:1.65;
+  word-break:break-word;
+  overflow-wrap:break-word;
+" id="annModalBody"></div>
+    <button class="modal-close" onclick="closeAnnModal()">닫기</button>
+  </div>
+</div>
+
+
+
+<!-- ===== 이미지 보기 모달(라이온스 노래) ===== -->
+<div id="imgModal" class="modal" hidden>
+  <div class="modal-backdrop" onclick="closeImgModal()"></div>
+  <div class="modal-card" style="width:min(96vw,520px);padding:12px;">
+    <img id="imgModalPhoto" style="width:100%;height:auto;border-radius:14px;display:block;" />
+    <button class="modal-close" onclick="closeImgModal()">닫기</button>
+  </div>
+</div>
+
+
+
+<!-- 🔵 기수 선택 슬라이드 -->
+<div id="classSlide" class="class-slide" hidden>
+
+  <div class="class-slide-backdrop" onclick="closeClassSlide()"></div>
+
+  <div class="class-slide-panel">
+
+<div class="class-slide-header" style="display:flex;justify-content:space-between;align-items:center;">
+  <span>기수 선택</span>
+  <button id="btnSelectAll" class="a-btn small">기수전체</button>
+</div>
+
+<div style="padding:8px 0;">
+  <button id="btnExecView" class="a-btn small" style="width:100%;">
+    총동문 집행부보기
+  </button>
+</div>
+
+
+
+<div class="wheel">
+  <div class="highlightBtn" id="highlightBtn"></div>
+  <div class="scroller" id="classScroller"></div>
+</div>
+
+
+  <!-- 🔵 추가 -->
+    <div class="swipe-indicator">‹</div>
+
+
+
+
+  </div>
+
+</div>
+
+
+
+</main>
+
+<script src="./config.js"></script>
+<script src="./app.js"></script>
+
+
+
+<!-- ✅ 공용 모달 -->
+<div id="modal" class="modal" hidden>
+  <div class="modal-backdrop" onclick="closeModal()"></div>
+
+  <div class="modal-card">
+
+    <!-- 🔥 내용 (스크롤 영역) -->
+    <div id="modalBody"></div>
+
+    <!-- 🔥 하단 고정 -->
+    <div class="modal-footer">
+      <button class="modal-close" onclick="closeModal()">닫기</button>
+    </div>
+
+  </div>
+</div>
+
+
+<div id="toast" hidden
+  style="
+    position:fixed;
+    left:50%;
+    bottom:70px;
+    transform:translateX(-50%);
+    background:rgba(0,0,0,.85);
+    color:#fff;
+    padding:10px 14px;
+    border-radius:14px;
+    font-size:14px;
+    z-index:9999;
+    pointer-events:none;
+  ">
+</div>
+
+<div id="loading">
+  <div class="loading-box">
+    <span class="spinner"></span>
+    로딩중...
+  </div>
+</div>
+
+<div id="holdOverlay" hidden>
+  <svg viewBox="0 0 36 36">
+    <circle cx="18" cy="18" r="16"></circle>
+  </svg>
+</div>
+
+
+
+
+<!-- 🔥 공통 확인 모달 -->
+<div id="confirmModal" class="confirm-modal" hidden>
+  <div class="confirm-backdrop"></div>
+
+  <div class="confirm-box">
+    <div class="confirm-title">확인</div>
+    <div class="confirm-message" id="confirmMessage">
+      로그아웃 하시겠습니까?
+    </div>
+
+    <div class="confirm-actions">
+      <button id="confirmCancel" class="btn-cancel">취소</button>
+      <button id="confirmOk" class="btn-ok">확인</button>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- 🔵 일정 입력 슬라이드 모달 -->
+<div id="eventSheet" class="event-sheet" hidden>
+
+  <!-- 배경 -->
+  <div class="sheet-backdrop" onclick="closeEventSheet()"></div>
+
+  <!-- 실제 패널 -->
+  <div class="sheet-card">
+
+    <!-- 상단 -->
+    <div class="event-sheet-header">
+      <button id="btnEventCancel" class="btn-cancel">취소</button>
+      <div class="title">일정</div>
+      <button id="btnEventSave" class="btn-save">저장</button>
+    </div>
+
+    <!-- 본문 -->
+    <div class="event-sheet-body">
+
+      <!-- 제목 -->
+      <input id="evTitle" class="ev-input title" placeholder="제목" />
+
+<!-- 🔵 일정 범위 선택 (전체관리자만 보임) -->
+<div id="evScopeBox" class="ev-scope" hidden>
+
+  <label>
+    <input type="radio" name="evScope" value="all" checked>
+    전체 일정
+  </label>
+
+  <label>
+    <input type="radio" name="evScope" value="my">
+    내 기수 일정
+  </label>
+
+</div>
+
+
+      <!-- 날짜 -->
+      <div class="ev-row">
+        <span>📅</span>
+        <span id="evDateText"></span>
+      </div>
+
+      <!-- 시간 -->
+      <div class="ev-row">
+        <span>⏰</span>
+        <input id="evTime" type="time" />
+      </div>
+
+      <!-- 장소 -->
+      <input id="evPlace" class="ev-input" placeholder="장소" />
+
+      <!-- 내용 -->
+      <textarea id="evDesc" class="ev-textarea" placeholder="내용"></textarea>
+
+      <!-- 옵션 -->
+      <div class="ev-options">
+
+
+
+        <label class="switch">
+          <input type="checkbox" id="evIsPopup">
+          <span>팝업으로 표시</span>
+        </label>
+
+      </div>
+
+    </div>
+
+<div class="event-sheet-footer">
+<button class="btn-cancel" onclick="closeEventSheet()">닫기</button>
+</div>
+
+</div>
+
+<!-- 🔥 여기로 이동 (이 줄 통째로 복붙) -->
+<button id="btnScrollTop" class="scroll-top-btn" hidden>↑</button>
+
+</body>
+</html>
+
+
