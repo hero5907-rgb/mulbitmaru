@@ -73,7 +73,7 @@ body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,"Noto Sans KR"
 .avatar{width:54px;height:54px;border-radius:14px;object-fit:cover;background:#e8eef8;border:1px solid var(--line)}
 .row-main{flex:1;min-width:0}
 .row-title{font-weight:950;font-size:15px;display:flex;align-items:center;gap:8px}
-.badge{font-size:11px;font-weight:900;padding:4px 8px;border-radius:999px;background:rgba(11,78,162,.10);color:var(--blue);border:1px solid rgba(11,78,162,.18)}
+.badge{font-size:11px;font-weight:900;padding:4px 8px;border-radius:999px;background:rgba(11,78,162,.10);color:#222;;border:1px solid rgba(11,78,162,.18)}
 .badge-new{
   font-size:11px;
   font-weight:950;
@@ -87,7 +87,7 @@ body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,"Noto Sans KR"
 .row-sub{margin-top:4px;color:var(--muted);font-size:12px;line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .actions{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
 .a-btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:8px 10px;border-radius:12px;border:1px solid var(--line);background:#fff;font-weight:900;font-size:12px;color:#0b1220;text-decoration:none}
-.a-btn.primary{background:rgba(11,78,162,.10);border-color:rgba(11,78,162,.22);color:var(--blue)}
+.a-btn.primary{background:rgba(11,78,162,.10);border-color:rgba(11,78,162,.22);color:#222;}
 .pill{font-size:12px;font-weight:950;padding:6px 10px;border-radius:999px;background:rgba(100,116,139,.10);color:#334155;border:1px solid rgba(100,116,139,.18)}
 .prose{color:#0f172a;line-height:1.6;font-size:14px;white-space:pre-wrap}
 .mt12{margin-top:12px}.mt16{margin-top:16px}
@@ -243,7 +243,7 @@ flex-direction: column;   /* 🔥 이거 추가 */
 .boot-title{
   font-size: 22px;
   font-weight: 900;
-  color:##6FA62F;
+  color:#6FA62F;
 }
 
 /* 서브 */
@@ -313,7 +313,7 @@ flex-direction: column;   /* 🔥 이거 추가 */
 }
 
 .modal-position {
-  color: ##6FA62F;
+  color:#222;
   font-weight: 600;
   margin-top: 4px;
 }
@@ -472,7 +472,7 @@ flex-direction: column;   /* 🔥 이거 추가 */
   border: 1px solid rgba(11,78,162,.25);
   background: rgba(11,78,162,.10);
 
-  color: ##6FA62F;          /* ✅ 파란 글씨로 변경 (중요) */
+  color: #6FA62F;          /* ✅ 파란 글씨로 변경 (중요) */
   font-weight: 900;
   text-decoration: none;
 
@@ -908,7 +908,7 @@ font-size: clamp(15px, 5vw, 24px);
   margin-top: 10px;
   font-size: 14px;
   font-weight: 700;
-  color: ##6FA62F;
+  color: #6FA62F;
 }
 
 
@@ -1149,7 +1149,7 @@ font-size: clamp(15px, 5vw, 24px);
   border-radius: 50%;
 
   background: rgba(11,78,162,0.08);
-color: ##6FA62F;
+color: #6FA62F;
 border: 1px solid rgba(11,78,162,0.15);
 opacity: 1;
 
@@ -1165,7 +1165,7 @@ opacity: 1;
 
 #screenMembers .icon-btn.small:hover{
   opacity: 1;
-  color: ##6FA62F;
+  color: #6FA62F;
 }
 
 #screenMembers .icon-btn.small:active{
@@ -1188,7 +1188,7 @@ opacity: 1;
 
 .badge.group-exec {
   background:#e8f1ff;
-  color:##6FA62F;
+  color:#6FA62F;
 }
 
 .badge.group-member {
@@ -1287,7 +1287,7 @@ animation: swipeHint .45s cubic-bezier(.22,.61,.36,1);
 
 .hold-ring circle{
   fill:none;
-  stroke:##6FA62F;
+  stroke:#6FA62F;
   stroke-width:3;
   stroke-dasharray:100;
   stroke-dashoffset:100;
@@ -1328,7 +1328,7 @@ animation: swipeHint .45s cubic-bezier(.22,.61,.36,1);
 
 #holdOverlay circle{
   fill:none;
-  stroke:##6FA62F;
+  stroke:#6FA62F;
   stroke-width:4;
 
   stroke-dasharray:100;
@@ -1641,7 +1641,7 @@ html, body {
   border-radius: 999px;
   border: 1px solid #d6deea;
   background: #f3f6fb;
-  color: ##6FA62F;
+  color: #6FA62F;
   font-weight: 600;
   cursor: pointer;
   transition: all .15s ease;
@@ -1707,7 +1707,7 @@ html, body {
   border-radius: 12px;
   cursor: pointer;
   font-weight: 600;
-  color: ##6FA62F;
+  color: #6FA62F;
   transition: background .15s ease;
 }
 
@@ -1716,7 +1716,7 @@ html, body {
 }
 
 .class-item.active {
-  background: ##6FA62F;
+  background: #6FA62F;
   color: #fff;
 }
 
@@ -1891,7 +1891,7 @@ html, body {
 }
 
 .wheel-item[data-active="1"]{
-  color:##6FA62F;
+  color:#6FA62F;
   transform:scale(1.08);
   opacity:1;
 }
@@ -2066,7 +2066,7 @@ html, body {
 .pw-save{
   background:none;
   border:none;
-  color:##6FA62F;
+  color:#6FA62F;
   font-weight:700;
   font-size:15px;
   cursor:pointer;
@@ -2088,7 +2088,7 @@ html, body {
 
 #btnMembersRefresh {
   background: #f1f4f9;
-  color: ##6FA62F;
+  color: #6FA62F;
   border: none;
   border-radius: 999px;
   padding: 6px 12px;
@@ -2480,7 +2480,7 @@ button:active{
 
   font-size:14px;        /* 🔥 살짝 키움 */
   font-weight:800;       /* 🔥 조금 더 굵게 */
-  color:##6FA62F;         /* 🔥 파란색 강조 */
+  color:#6FA62F;         /* 🔥 파란색 강조 */
 
   letter-spacing:0.3px;
 }
@@ -2746,7 +2746,7 @@ button:active{
   background:none;
   border:none;
   font-size:14px;
-  color:##6FA62F;
+  color:#6FA62F;
   font-weight:900;
 }
 
@@ -2960,7 +2960,7 @@ button:active{
 }
 
 #btnEventSave{
-  color:##6FA62F;
+  color:#6FA62F;
   font-weight:900;
 }
 
@@ -2999,7 +2999,7 @@ button:active{
 
 #btnEventSave{
   justify-self: end;
-  color:##6FA62F;
+  color:#6FA62F;
   font-weight:900;
 }
 
@@ -3111,7 +3111,7 @@ button:active{
   width: 18px;
   height: 18px;
   border: 3px solid #ddd;
-  border-top-color: ##6FA62F;
+  border-top-color: #6FA62F;
   border-radius: 50%;
   animation: spin .8s linear infinite;
 }
@@ -3414,7 +3414,7 @@ button:active{
 
 /* 아이콘 색 */
 .fc .fc-button-primary{
-  color:##6FA62F;
+  color:#6FA62F;
 }
 
 
@@ -3460,7 +3460,7 @@ button:active{
 /* 🔥 카드 안 새로고침 버튼 보이게 */
 .card .icon-btn{
   background: rgba(11,78,162,0.08);
-  color: ##6FA62F;
+  color: #6FA62F;
   border: 1px solid rgba(11,78,162,0.15);
 }
 
@@ -3493,7 +3493,7 @@ button:active{
   /* 아이콘 */
   font-size:16px;
   font-weight:700;
-  color:##6FA62F;
+  color:#6FA62F;
 
   cursor:pointer;
   transition: all .15s ease;
