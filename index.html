@@ -6,7 +6,7 @@
 content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
 
   <meta name="theme-color" content="#1F4D3A" />
-  <title id="docTitle">클럽 수첩</title>
+  <title id="docTitle">업무 수첩</title>
 
   <link rel="manifest" href="./manifest.webmanifest">
   <link rel="stylesheet" href="./styles.css" />
@@ -24,8 +24,8 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no,
   <div class="brand">
     <img id="clubLogoSmall" class="brand-logo" alt="로고" src="./logo.png" />
     <div class="brand-title">
-      <div id="districtText" class="brand-sub">한동대학교 최고경영자과정</div>
-      <div id="clubNameText" class="brand-main">한 동 회</div>
+      <div id="districtText" class="brand-sub">사랑과 정성을 다하는 사회적협동조합</div>
+      <div id="clubNameText" class="brand-main">물빛마루</div>
     </div>
   </div>
 
@@ -66,8 +66,8 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no,
   <section id="screenBoot" class="screen boot" hidden>
     <div class="boot-card">
       <img class="boot-logo" src="./logo.png" alt="로고" />
-	<div class="boot-title" id="bootTitle">클럽명</div>
-	<div class="boot-sub" id="bootSub">회원수첩</div>
+	<div class="boot-title" id="bootTitle">회사명</div>
+	<div class="boot-sub" id="bootSub">업무수첩</div>
 
 
       <div class="boot-loading">
@@ -105,8 +105,8 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no,
       <!-- ✅ hero-text는 딱 1개만 -->
       <div class="hero-text">
         <div class="hero-title">
-          	<div class="title-main" id="loginTitleMain">클럽명</div>
-	<div class="title-sub" id="loginTitleSub">회원수첩</div>
+          	<div class="title-main" id="loginTitleMain">회사명</div>
+	<div class="title-sub" id="loginTitleSub">업무수첩</div>
 
         </div>
 
@@ -193,12 +193,12 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no,
 
     <div class="grid">
       <button class="tile hero-tall" data-nav="members">
-        <div class="tile-title">회원명부</div>
-        <div class="tile-desc">회원검색 · 연락처 상세보기 · 통화 · 문자 </div>
+        <div class="tile-title">직원명부</div>
+        <div class="tile-desc">직원검색 · 연락처 상세보기 · 통화 · 문자 </div>
       </button>
       <button class="tile" data-nav="announcements">
-        <div class="tile-title">공지사항</div>
-        <div class="tile-desc">관리자 공지 확인</div>
+        <div class="tile-title">업무지시사항</div>
+        <div class="tile-desc">업무지시 확인</div>
       </button>
       <button class="tile" data-nav="purpose" hidden>
         <div class="tile-title">한동회 모임목적</div>
@@ -206,7 +206,7 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no,
       </button>
       <button class="tile" data-nav="bylaws">
         <div class="tile-title">
-  <span class="gisuPrefix"></span>회칙
+  <span class="gisuPrefix"></span>업무메뉴얼
 </div>
         <div class="tile-desc">회칙/규정</div>
       </button>
@@ -240,8 +240,8 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no,
 
 <!-- 🔵 의전 -->
 <button class="tile" data-nav="ceremony">
-  <div class="tile-title">초금회 소개</div>
-  <div class="tile-desc">초금회 연혁</div>
+  <div class="tile-title">근무표</div>
+  <div class="tile-desc">근무표확인</div>
 </button>
 
 
@@ -249,7 +249,7 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no,
 
     <div class="card mt16">
       <div class="card-header">
-        <div class="card-title">최신 공지</div>
+        <div class="card-title">최신 업무</div>
         <button class="link" data-nav="announcements">전체보기</button>
       </div>
       <div id="latestAnnouncements" class="list"></div>
@@ -274,7 +274,7 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no,
 
   <div class="card-header">
     <div class="card-title" style="display:flex;align-items:center;gap:6px;">
-      회원명부
+      직원명부
 
 <button id="btnClassFilter" class="class-filter-btn" type="button" hidden>
   기수전체 ▼
@@ -291,7 +291,7 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no,
   <input
     id="memberSearch"
     class="input"
-    placeholder="이름 / 직위 / 그룹 / 휴대폰 검색"
+    placeholder="이름 / 직위 / 근무지 / 휴대폰 검색"
   />
 
 </div>
@@ -308,7 +308,7 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no,
     <div class="card">
       <div class="card-header">
         <div class="card-header" style="display:flex;justify-content:space-between;align-items:center;">
-  <div class="card-title">공지사항</div>
+  <div class="card-title">업무지시사항</div>
   <button id="btnAnnRefresh" class="icon-btn">⟳</button>
 </div>
 
@@ -326,7 +326,7 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no,
 
 <div class="calendar-header">
   <h2 id="calendarTitle">
-    초금회 공식<span class="gisuPrefix"></span>일정표
+    물빛마루 공식<span class="gisuPrefix"></span>일정표
   </h2>
   <button id="btnCalendarRefresh" class="icon-btn">⟳</button>
 </div>
@@ -357,7 +357,7 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no,
 
 <section id="screenEvents" class="screen" hidden>
   <div class="card">
-    <h3>클럽일정표</h3>
+    <h3>일정표</h3>
     <div id="eventsList">불러오는 중...</div>
   </div>
 </section>
@@ -414,7 +414,7 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no,
     <div class="modal-phone" id="myPhone"></div>
 
     <div class="modal-actions">
-      <button id="btnHallCall" class="a-btn primary">☎ 앱관리자 통화</button>
+      <button id="btnHallCall" class="a-btn primary">☎ 관리자 통화</button>
       <button id="btnMyInbox" class="a-btn">📩 메시지함</button>
     </div>
 
@@ -476,7 +476,7 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no,
 
   <div class="card">
     <div class="intro-header">
-      <div class="card-title">초금회 소개</div>
+      <div class="card-title">회사 소개</div>
       <button class="intro-close" onclick="popNav()">✕</button>
     </div>
     <!-- ✅ 단체사진 -->
