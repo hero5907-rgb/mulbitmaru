@@ -349,8 +349,8 @@ if (!g) {
   el("myEngName").textContent = m.engName || "";
 
   el("myMemberInfo").innerHTML =
-    `${m.memberNo ? `<div>회원번호: ${m.memberNo}</div>` : ""}` +
-    `${m.joinDate ? `<div>입회일자: ${m.joinDate}</div>` : ""}`;
+    `${m.memberNo ? `<div>사원번호: ${m.memberNo}</div>` : ""}` +
+    `${m.joinDate ? `<div>입사일자: ${m.joinDate}</div>` : ""}`;
 
   const rec = el("myRecommender");
   if(m.recommender){
@@ -596,7 +596,7 @@ el("btnChangePw")?.addEventListener("click", () => {
     "PASSWORD_MUST_BE_4_DIGITS": "비밀번호는 숫자 4자리입니다.",
     "WRONG_CURRENT_PASSWORD": "현재 비밀번호가 일치하지 않습니다.",
     "LOGIN_REQUIRED": "로그인이 필요합니다.",
-    "USER_NOT_FOUND": "회원 정보를 찾을 수 없습니다.",
+    "USER_NOT_FOUND": "정보를 찾을 수 없습니다.",
     "EMPTY_PASSWORD": "비밀번호를 입력하세요."
   };
 
@@ -723,10 +723,10 @@ function setBrand(settings) {
   }
 
   if (el("bootTitle")) el("bootTitle").textContent = clubName;
-  if (el("bootSub")) el("bootSub").textContent = "회원수첩";
+  if (el("bootSub")) el("bootSub").textContent = "업무수첩";
 
   if (el("loginTitleMain")) el("loginTitleMain").textContent = clubName;
-  if (el("loginTitleSub")) el("loginTitleSub").textContent = "회원수첩";
+  if (el("loginTitleSub")) el("loginTitleSub").textContent = "업무수첩";
 
   if (el("docTitle")) el("docTitle").textContent = `${clubName} 수첩`;
 }
@@ -1604,7 +1604,7 @@ if (logo) {
 
 
 
-// 🔄 회원명부 새로고침 버튼
+// 🔄 직원명부 새로고침 버튼
 const btnMembersRefresh = el("btnMembersRefresh");
 if (btnMembersRefresh) {
   btnMembersRefresh.onclick = () => {
@@ -2233,12 +2233,12 @@ if (engEl) {
   engEl.textContent = m.engName || "";
 }
 
-// ===== 추가: 회원번호 / 입회일자 =====
+// ===== 추가: 사원번호 / 입사일자 =====
 const infoEl = el("modalMemberInfo");
 if (infoEl) {
   const rows = [];
-  if (m.memberNo) rows.push(`<div>회원번호: ${esc(m.memberNo)}</div>`);
-  if (m.joinDate) rows.push(`<div>입회일자: ${esc(m.joinDate)}</div>`);
+  if (m.memberNo) rows.push(`<div>사원번호: ${esc(m.memberNo)}</div>`);
+  if (m.joinDate) rows.push(`<div>입사일자: ${esc(m.joinDate)}</div>`);
   infoEl.innerHTML = rows.join("");
 }
 
@@ -2342,7 +2342,7 @@ if (!localStorage.getItem("memberSwipeHint")) {
   // ⭐ 강제로 toast 잠금 해제
   toast._lock = false;
 
-  toast("좌우로 밀면 다음 회원을 볼 수 있어요", {
+  toast("좌우로 밀면 다음 사람을 볼 수 있어요", {
     duration:2500,
     force:true
   });
@@ -3151,11 +3151,11 @@ function reloadMembers() {
     return;
   }
 
-  toast("회원명부 업데이트 중...");
+  toast("직원명부 업데이트 중...");
 
   api("data", {}, (json) => {
     if (!json || json.ok !== true) {
-      toast("회원명부 불러오기 실패");
+      toast("직원명부 불러오기 실패");
       return;
     }
 
@@ -3196,7 +3196,7 @@ state.members.sort((a, b) =>
 
 
 
-    toast("회원명부 업데이트 완료");
+    toast("직원명부 업데이트 완료");
   });
 }
 
