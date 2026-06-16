@@ -4042,6 +4042,10 @@ function openDutySchedule(){
 
 api("getDutySchedules", {}, (res)=>{
 
+
+  console.log("근무표 응답", res);
+
+
   dutyList = res.list || [];
 
   if(!dutyList.length){
