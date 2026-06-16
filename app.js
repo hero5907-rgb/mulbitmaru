@@ -4035,8 +4035,6 @@ document.addEventListener("click", function(e){
 
 
 
-
-
 let dutyList = [];
 let dutyIndex = 0;
 
@@ -4061,13 +4059,19 @@ function openDutySchedule(){
 
       const idx =
         dutyList.findIndex(
-          x => x.month === currentMonth
+          x => String(x.month) === currentMonth
         );
 
       dutyIndex =
         idx >= 0 ? idx : dutyList.length - 1;
 
       renderDuty();
+
+    })
+    .withFailureHandler(err=>{
+
+      console.error(err);
+      alert("근무표 불러오기 실패");
 
     })
     .getDutySchedules();
@@ -4077,14 +4081,21 @@ function renderDuty(){
 
   const item = dutyList[dutyIndex];
 
+
+ console.log(item);
+
+
+  if(!item) return;
+
   $("dutyMonthTitle").textContent =
     item.month;
 
   $("dutyImage").src =
     item.image;
+
 }
 
-function prevDuty(){
+function prevDutyMonth(){
 
   if(dutyIndex > 0){
 
@@ -4096,7 +4107,7 @@ function prevDuty(){
 
 }
 
-function nextDuty(){
+function nextDutyMonth(){
 
   if(dutyIndex < dutyList.length - 1){
 
