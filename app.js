@@ -4078,13 +4078,13 @@ function renderDuty(){
 
   if(!item) return;
 
-  $("dutyMonthTitle").textContent =
+  el("dutyMonthTitle").textContent =
     item.month || "";
 
-  $("dutyImage").src =
+  el("dutyImage").src =
     item.image || "";
 
-  $("dutyImage").style.display = "block";
+  el("dutyImage").style.display = "block";
 }
 
 function prevDutyMonth(){
