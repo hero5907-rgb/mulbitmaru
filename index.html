@@ -479,53 +479,30 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no,
 
 <section id="screenCeremony" class="screen" hidden>
 
-  <div class="card duty-card">
+  <div class="card">
 
     <div class="intro-header">
       <div class="card-title">근무표</div>
       <button class="intro-close" onclick="popNav()">✕</button>
     </div>
 
-    <div id="dutyMonthTitle"
-         style="
-           text-align:center;
-           font-size:18px;
-           font-weight:800;
-           margin:12px 0;
-         ">
-      2026-06
+    <div style="text-align:center;margin-bottom:12px;">
+      <h2 id="dutyMonthTitle">2026-06</h2>
     </div>
 
-    <div style="
-      display:flex;
-      justify-content:center;
-      gap:10px;
-      margin-bottom:12px;
-    ">
-
-      <button class="btn-blue"
-              onclick="prevDuty()">
-        ◀ 이전달
-      </button>
-
-      <button class="btn-blue"
-              onclick="nextDuty()">
-        다음달 ▶
-      </button>
-
+    <div style="display:flex;justify-content:center;gap:10px;margin-bottom:12px;">
+      <button onclick="prevDutyMonth()">◀ 이전달</button>
+      <button onclick="nextDutyMonth()">다음달 ▶</button>
     </div>
 
-    <img
-      id="dutyImage"
-      src=""
-      style="
-        width:100%;
-        border-radius:16px;
-        object-fit:contain;
-        cursor:pointer;
-      "
-      onclick="openImgModal(this.src)"
-    >
+<div class="duty-image-wrap">
+
+  <img
+    id="dutyImage"
+    src=""
+    onclick="openImgModal(this.src)">
+
+</div>
 
   </div>
 
@@ -799,6 +776,33 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no,
 
 <!-- 🔥 여기로 이동 (이 줄 통째로 복붙) -->
 <button id="btnScrollTop" class="scroll-top-btn" hidden>↑</button>
+
+
+
+
+
+<div id="dutyZoomModal"
+     style="
+       display:none;
+       position:fixed;
+       inset:0;
+       background:rgba(0,0,0,.9);
+       z-index:99999;
+     "
+     onclick="closeDutyZoom()">
+
+  <img
+    id="dutyZoomImage"
+    style="
+      position:absolute;
+      left:50%;
+      top:50%;
+      transform:translate(-50%,-50%);
+      max-width:95%;
+      max-height:95%;
+    ">
+</div>
+
 
 </body>
 </html>

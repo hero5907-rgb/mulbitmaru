@@ -1448,7 +1448,11 @@ else if (target === "lionism") {
 }
 
 else if (target === "ceremony") {
+
   pushNav("ceremony");
+
+  openDutySchedule();
+
 }
       
     });
@@ -4033,4 +4037,73 @@ document.addEventListener("click", function(e){
 
 
 
+let dutyList = [];
+let dutyIndex = 0;
 
+function openDutySchedule(){
+
+  google.script.run
+    .withSuccessHandler(list=>{
+
+      dutyList = list || [];
+
+      if(!dutyList.length){
+        alert("등록된 근무표가 없습니다.");
+        return;
+      }
+
+      const now = new Date();
+
+      const currentMonth =
+        now.getFullYear() +
+        "-" +
+        String(now.getMonth()+1).padStart(2,"0");
+
+      const idx =
+        dutyList.findIndex(
+          x => x.month === currentMonth
+        );
+
+      dutyIndex =
+        idx >= 0 ? idx : dutyList.length - 1;
+
+      renderDuty();
+
+    })
+    .getDutySchedules();
+}
+
+function renderDuty(){
+
+  const item = dutyList[dutyIndex];
+
+  $("dutyMonthTitle").textContent =
+    item.month;
+
+  $("dutyImage").src =
+    item.image;
+}
+
+function prevDuty(){
+
+  if(dutyIndex > 0){
+
+    dutyIndex--;
+
+    renderDuty();
+
+  }
+
+}
+
+function nextDuty(){
+
+  if(dutyIndex < dutyList.length - 1){
+
+    dutyIndex++;
+
+    renderDuty();
+
+  }
+
+}
