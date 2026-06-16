@@ -4040,14 +4040,14 @@ let dutyIndex = 0;
 
 function openDutySchedule(){
 
-  api("getDutySchedules", {}, (list)=>{
+api("getDutySchedules", {}, (res)=>{
 
-    dutyList = list || [];
+  dutyList = res.list || [];
 
-    if(!dutyList.length){
-      alert("등록된 근무표가 없습니다.");
-      return;
-    }
+  if(!dutyList.length){
+    alert("등록된 근무표가 없습니다.");
+    return;
+  }
 
     const now = new Date();
 
