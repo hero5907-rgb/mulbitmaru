@@ -486,25 +486,16 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no,
       <button class="intro-close" onclick="popNav()">✕</button>
     </div>
 
-    <div style="text-align:center;margin-bottom:12px;">
-      <h2 id="dutyMonthTitle">2026-06</h2>
-    </div>
 
 <div class="duty-header">
 
-  <button
-    class="duty-arrow"
-    onclick="prevDutyMonth()">
+  <button class="duty-arrow" onclick="prevDutyMonth()">
     ‹
   </button>
 
-  <div id="dutyMonthTitle">
-    2026-06
-  </div>
+  <h2 id="dutyMonthTitle"></h2>
 
-  <button
-    class="duty-arrow"
-    onclick="nextDutyMonth()">
+  <button class="duty-arrow" onclick="nextDutyMonth()">
     ›
   </button>
 
@@ -516,19 +507,6 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no,
     id="dutyImage"
     src=""
     onclick="openImgModal(this.src)">
-
-</div>
-
-
-<div class="duty-tools">
-
-  <button onclick="rotateDuty()">
-    ↻
-  </button>
-
-  <button onclick="openImgModal(el('dutyImage').src)">
-    ⤢
-  </button>
 
 </div>
 
