@@ -3671,4 +3671,7 @@ button:active{
 #screenCeremony button:hover{
   opacity:.9;
 }
-
+#dutyMonthTitle{
+  text-align:center;
+  letter-spacing:1px;
+}
