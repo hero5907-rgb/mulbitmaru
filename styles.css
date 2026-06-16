@@ -3629,83 +3629,39 @@ button:active{
    근무표
 ========================= */
 
-.duty-card{
-  max-width:900px;
-  margin:0 auto;
-}
-
-.duty-month{
-  text-align:center;
-  font-size:20px;
-  font-weight:800;
-  margin:12px 0 8px;
-  color:#111;
-}
-
-.duty-dots{
-  display:flex;
-  justify-content:center;
-  gap:8px;
-  margin:8px 0 16px;
-}
-
-.duty-dot{
-  width:8px;
-  height:8px;
-  border-radius:50%;
-  background:#d9d9d9;
-  transition:.2s;
-}
-
-.duty-dot.active{
-  background:#8CC63F;
-  transform:scale(1.2);
-}
-
-.duty-nav{
-  display:flex;
-  justify-content:center;
-  gap:10px;
-  margin-bottom:16px;
-}
-
-.duty-nav button{
-  border:none;
-  background:#8CC63F;
-  color:#fff;
-  border-radius:14px;
-  padding:10px 16px;
-  font-weight:700;
-  cursor:pointer;
-}
-
-.duty-nav button:active{
-  transform:scale(.97);
-}
-
 .duty-image-wrap{
   width:100%;
-  overflow:hidden;
-  border-radius:24px;
+  min-height:300px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
   background:#fff;
-  box-shadow:
-    0 8px 30px rgba(0,0,0,.08);
+  border-radius:20px;
+  overflow:hidden;
+  border:1px solid #e5e7eb;
 }
 
 #dutyImage{
-  display:block;
-  width:100%;
-  height:auto;
-  border-radius:24px;
+  display:block !important;
+  width:100% !important;
+  max-width:1200px !important;
+  height:auto !important;
+  object-fit:contain;
+  background:#fff;
+  border-radius:12px;
   cursor:pointer;
 }
 
-/* 확대 모달 */
+#dutyImage[src=""]{
+  display:none !important;
+}
+
+/* 확대 */
 
 #dutyZoomModal{
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,.92);
+  background:rgba(0,0,0,.9);
   z-index:99999;
   display:none;
 }
@@ -3717,29 +3673,6 @@ button:active{
   transform:translate(-50%,-50%);
   max-width:95%;
   max-height:95%;
-  border-radius:12px;
 }
-
-/* 아이폰 느낌 */
-
-@supports (-webkit-touch-callout:none){
-
-  .duty-card{
-    border-radius:24px;
-  }
-
-  .duty-nav button{
-    border-radius:16px;
-  }
-
-  .duty-image-wrap{
-    border-radius:28px;
-  }
-}
-
-
-
-
-
 
 

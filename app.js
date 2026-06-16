@@ -4078,30 +4078,27 @@ function renderDuty(){
 
   const item = dutyList[dutyIndex];
 
-  console.log(item);
+  console.log("현재 item", item);
 
   if(!item) return;
 
   el("dutyMonthTitle").textContent =
     item.month || "";
 
-  el("dutyImage").src =
-    item.image || "";
+  const img = el("dutyImage");
 
-  el("dutyImage").style.display = "block";
+  img.onload = ()=>{
+    console.log("근무표 이미지 로드 성공");
+  };
+
+  img.onerror = ()=>{
+    console.error("근무표 이미지 로드 실패", item.image);
+  };
+
+  img.src = item.image || "";
 }
 
-function prevDutyMonth(){
 
-  if(dutyIndex > 0){
-
-    dutyIndex--;
-
-    renderDuty();
-
-  }
-
-}
 
 function nextDutyMonth(){
 
