@@ -255,6 +255,11 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no,
       <div id="latestAnnouncements" class="list"></div>
     </div>
 
+
+
+
+
+
 <!-- ✅ 회관/연락처/카피 (홈 하단) -->
     <div class="club-footer">
       <div id="hallAddress"></div>
@@ -474,18 +479,53 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no,
 
 <section id="screenCeremony" class="screen" hidden>
 
-  <div class="card">
+  <div class="card duty-card">
+
     <div class="intro-header">
-      <div class="card-title">회사 소개</div>
+      <div class="card-title">근무표</div>
       <button class="intro-close" onclick="popNav()">✕</button>
     </div>
-    <!-- ✅ 단체사진 -->
-    <div class="intro-photo-wrap">
-      <img src="./group.jpg" class="intro-photo" onclick="openImgModal('./group.jpg')" />
+
+    <div id="dutyMonthTitle"
+         style="
+           text-align:center;
+           font-size:18px;
+           font-weight:800;
+           margin:12px 0;
+         ">
+      2026-06
     </div>
 
-    <!-- ✅ 소개글 -->
-<div class="intro-text" id="introText"></div>
+    <div style="
+      display:flex;
+      justify-content:center;
+      gap:10px;
+      margin-bottom:12px;
+    ">
+
+      <button class="btn-blue"
+              onclick="prevDuty()">
+        ◀ 이전달
+      </button>
+
+      <button class="btn-blue"
+              onclick="nextDuty()">
+        다음달 ▶
+      </button>
+
+    </div>
+
+    <img
+      id="dutyImage"
+      src=""
+      style="
+        width:100%;
+        border-radius:16px;
+        object-fit:contain;
+        cursor:pointer;
+      "
+      onclick="openImgModal(this.src)"
+    >
 
   </div>
 
