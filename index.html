@@ -490,9 +490,24 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no,
       <h2 id="dutyMonthTitle">2026-06</h2>
     </div>
 
-<div class="duty-nav">
-  <button onclick="prevDutyMonth()">❮</button>
-  <button onclick="nextDutyMonth()">❯</button>
+<div class="duty-header">
+
+  <button
+    class="duty-arrow"
+    onclick="prevDutyMonth()">
+    ‹
+  </button>
+
+  <div id="dutyMonthTitle">
+    2026-06
+  </div>
+
+  <button
+    class="duty-arrow"
+    onclick="nextDutyMonth()">
+    ›
+  </button>
+
 </div>
 
 <div class="duty-image-wrap">
@@ -503,6 +518,20 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no,
     onclick="openImgModal(this.src)">
 
 </div>
+
+
+<div class="duty-tools">
+
+  <button onclick="rotateDuty()">
+    ↻
+  </button>
+
+  <button onclick="openImgModal(el('dutyImage').src)">
+    ⤢
+  </button>
+
+</div>
+
 
   </div>
 
@@ -780,19 +809,28 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no,
 
 
 
-
 <div id="dutyZoomModal"
      style="
        display:none;
        position:fixed;
        inset:0;
-       background:rgba(0,0,0,.9);
+       background:rgba(0,0,0,.92);
        z-index:99999;
      "
      onclick="closeDutyZoom()">
 
+  <button
+    class="duty-zoom-close"
+    onclick="
+      event.stopPropagation();
+      closeDutyZoom();
+    ">
+    ✕
+  </button>
+
   <img
     id="dutyZoomImage"
+    onclick="event.stopPropagation()"
     style="
       position:absolute;
       left:50%;
@@ -800,9 +838,10 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no,
       transform:translate(-50%,-50%);
       max-width:95%;
       max-height:95%;
+      border-radius:12px;
     ">
-</div>
 
+</div>
 
 </body>
 </html>
