@@ -3952,3 +3952,19 @@ button:active{
   overflow-y:auto;
   -webkit-overflow-scrolling:touch;
 }
+
+
+/* 🔥 공지 상세 전용 */
+
+#annModal .modal-card{
+  width:min(94vw,560px);
+  max-height:85vh;
+  display:flex;
+  flex-direction:column;
+}
+
+#annModalBody{
+  flex:1;
+  overflow-y:auto;
+  padding-right:4px;
+}
