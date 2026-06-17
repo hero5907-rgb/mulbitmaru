@@ -3911,36 +3911,4 @@ button:active{
     0 2px 8px rgba(0,0,0,.08);
 }
 
-/* 상단 제목 */
 
-.card-title{
-
-  text-align:center !important;
-
-  width:100%;
-
-  font-size:18px;
-  font-weight:700;
-
-  margin-bottom:6px;
-}
-
-/* X 버튼 */
-
-.intro-close{
-
-  position:absolute;
-
-  top:12px;
-  right:12px;
-
-  width:36px;
-  height:36px;
-
-  border:none;
-  border-radius:50%;
-
-  background:#f3f4f6;
-
-  font-size:20px;
-}
