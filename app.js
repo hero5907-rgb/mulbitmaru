@@ -2578,7 +2578,7 @@ function openAnnModal(a){
 
     html += `
       <hr style="
-        margin:10px 0;
+        margin:0;
         border:none;
         border-top:1px solid #eee;
       ">
@@ -2608,8 +2608,13 @@ function openAnnModal(a){
           <div style="
             margin:0;
             padding:0;
+
             display:flex;
             flex-direction:column;
+            align-items:flex-start;
+
+            height:fit-content;
+            min-height:0;
           ">
 
             <iframe
@@ -2647,6 +2652,12 @@ function openAnnModal(a){
           <div style="
             margin:0;
             padding:0;
+
+            display:flex;
+            align-items:flex-start;
+
+            height:fit-content;
+            min-height:0;
           ">
 
             <img
@@ -2655,6 +2666,9 @@ function openAnnModal(a){
               style="
                 display:block;
                 width:100%;
+                height:auto;
+                max-height:none;
+
                 border-radius:12px;
                 border:1px solid #ddd;
                 cursor:pointer;
