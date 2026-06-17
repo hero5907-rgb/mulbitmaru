@@ -2630,17 +2630,24 @@ if(mime.includes("pdf")){
         📄 ${name}
       </div>
 
-      <iframe
-        src="${previewUrl}"
-        style="
-          display:block;
-          width:100%;
-          height:180px;
-          border:none;
-          border-radius:8px;
-          background:#fff;
-        ">
-      </iframe>
+<div style="
+  width:100%;
+  height:220px;
+  overflow:hidden;
+  border-radius:8px;
+  background:#fff;
+  border:1px solid #e5e7eb;
+">
+  <iframe
+    src="${previewUrl}"
+    style="
+      width:100%;
+      height:520px;
+      border:none;
+      margin-top:-90px;
+    ">
+  </iframe>
+</div>
 
       <div style="
         text-align:right;
