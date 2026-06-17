@@ -4139,21 +4139,25 @@ function nextDutyMonth(){
 
 function openDutyZoom(){
 
-  const img = $("dutyImage");
+  const img =
+    document.getElementById("dutyImage");
 
   if(!img || !img.src) return;
 
-  $("dutyZoomImage").src =
-    img.src;
+  document.getElementById(
+    "dutyZoomImage"
+  ).src = img.src;
 
-  $("dutyZoomModal").style.display =
-    "block";
+  document.getElementById(
+    "dutyZoomModal"
+  ).style.display = "block";
 
 }
 
 function closeDutyZoom(){
 
-  $("dutyZoomModal").style.display =
-    "none";
+  document.getElementById(
+    "dutyZoomModal"
+  ).style.display = "none";
 
 }
