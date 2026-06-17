@@ -2610,60 +2610,63 @@ function openAnnModal(a){
           "/preview?embedded=true"
         );
 
-      // PDF
-      if(mime.includes("pdf")){
+  // PDF
+if(mime.includes("pdf")){
 
-        html += `
+  html += `
 
-          <div style="
-            margin:10px 0;
-            padding:8px;
-            border:1px solid #e5e7eb;
-            border-radius:12px;
-            background:#fafafa;
+    <div style="
+      margin:10px 0;
+      padding:8px;
+      border:1px solid #e5e7eb;
+      border-radius:12px;
+      background:#fafafa;
+
+      display:flex;
+      flex-direction:column;
+      align-items:stretch;
+    ">
+
+      <div style="
+        font-weight:700;
+        margin-bottom:8px;
+      ">
+        📄 ${name}
+      </div>
+
+      <iframe
+        src="${previewUrl}"
+        style="
+          display:block;
+          width:100%;
+          height:400px;
+          border:none;
+          border-radius:8px;
+          background:#fff;
+          vertical-align:top;
+        ">
+      </iframe>
+
+      <div style="
+        text-align:right;
+        margin-top:6px;
+      ">
+        <a
+          href="${url}"
+          target="_blank"
+          style="
+            color:#2563eb;
+            font-size:13px;
           ">
+          원본 열기
+        </a>
+      </div>
 
-            <div style="
-              font-weight:700;
-              margin-bottom:8px;
-            ">
-              📄 ${name}
-            </div>
+    </div>
 
-            <iframe
-              src="${previewUrl}"
-              style="
-                display:block;
-                width:100%;
-                height:70vh;
-                min-height:500px;
-                border:none;
-                border-radius:8px;
-                background:#fff;
-              ">
-            </iframe>
+  `;
 
-            <div style="
-              text-align:right;
-              margin-top:6px;
-            ">
-              <a
-                href="${url}"
-                target="_blank"
-                style="
-                  color:#2563eb;
-                  font-size:13px;
-                ">
-                원본 열기
-              </a>
-            </div>
-
-          </div>
-
-        `;
-
-      }
-
+}
       // 이미지
       else if(mime.includes("image")){
 
