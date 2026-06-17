@@ -2577,31 +2577,135 @@ function openAnnModal(a){
   if(files.length){
 
     html += `
-      <hr style="margin:16px 0;">
+      <hr style="
+        margin:16px 0;
+        border:none;
+        border-top:1px solid #eee;
+      ">
+
       <div style="
         font-weight:700;
-        margin-bottom:10px;
+        margin-bottom:14px;
       ">
         📎 첨부파일
       </div>
     `;
 
-    files.forEach((url,idx)=>{
+    files.forEach(line=>{
 
-      html += `
-        <div style="margin-bottom:8px;">
-          <a
-            href="${url}"
-            target="_blank"
-            style="
-              color:#2563eb;
-              text-decoration:none;
-              font-weight:600;
+      const parts = line.split("|");
+
+      const name =
+        parts[0] || "첨부파일";
+
+      const mime =
+        parts[1] || "";
+
+      const url =
+        parts[2] || "";
+
+      const previewUrl =
+        url.replace("/view","/preview");
+
+      // PDF
+      if(mime.includes("pdf")){
+
+        html += `
+
+          <div style="
+            margin-bottom:20px;
+          ">
+
+            <div style="
+              font-weight:700;
+              margin-bottom:8px;
             ">
-            📄 첨부파일 ${idx+1}
-          </a>
-        </div>
-      `;
+              📄 ${name}
+            </div>
+
+            <iframe
+              src="${previewUrl}"
+              style="
+                width:100%;
+                height:500px;
+                border:1px solid #ddd;
+                border-radius:12px;
+                background:#fff;
+              ">
+            </iframe>
+
+            <div style="
+              margin-top:8px;
+            ">
+              <a
+                href="${url}"
+                target="_blank">
+                원본 열기
+              </a>
+            </div>
+
+          </div>
+        `;
+
+      }
+
+      // 이미지
+      else if(mime.includes("image")){
+
+        html += `
+
+          <div style="
+            margin-bottom:20px;
+          ">
+
+            <div style="
+              font-weight:700;
+              margin-bottom:8px;
+            ">
+              🖼 ${name}
+            </div>
+
+            <img
+              src="${previewUrl}"
+              style="
+                width:100%;
+                border-radius:12px;
+                border:1px solid #ddd;
+              ">
+
+            <div style="
+              margin-top:8px;
+            ">
+              <a
+                href="${url}"
+                target="_blank">
+                원본 보기
+              </a>
+            </div>
+
+          </div>
+        `;
+
+      }
+
+      // 기타 파일
+      else{
+
+        html += `
+
+          <div style="
+            margin-bottom:12px;
+          ">
+            <a
+              href="${url}"
+              target="_blank">
+              📎 ${name}
+            </a>
+          </div>
+
+        `;
+
+      }
 
     });
 
