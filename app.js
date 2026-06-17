@@ -2582,7 +2582,7 @@ function openAnnModal(a){
   border:none;
   border-top:1px solid #eee;
 ">
-    `;
+`;
 
     files.forEach(line=>{
 
@@ -2607,7 +2607,6 @@ function openAnnModal(a){
 
 <div style="
   margin:0;
-  margin-bottom:-135px;
   padding:0;
 
   display:flex;
@@ -2618,22 +2617,22 @@ function openAnnModal(a){
   min-height:0;
 ">
 
-            <iframe
-              src="${previewUrl}"
-              style="
-                display:block;
-                width:100%;
-                height:60vh;
-                min-height:350px;
-                border:none;
-                border-radius:12px;
-                background:#fff;
-              ">
-            </iframe>
+  <iframe
+    src="${previewUrl}"
+    style="
+      display:block;
+      width:100%;
+      height:70vh;
+      min-height:500px;
+      border:none;
+      border-radius:12px;
+      background:#fff;
+    ">
+  </iframe>
 
-          </div>
+</div>
 
-        `;
+`;
 
       }
 
@@ -2652,7 +2651,7 @@ function openAnnModal(a){
 
 <div style="
   margin:0;
-  margin-bottom:-15px;
+  margin-bottom:-30px;
   padding:0;
 
   display:flex;
@@ -2662,23 +2661,23 @@ function openAnnModal(a){
   min-height:0;
 ">
 
-            <img
-              src="${imageUrl}"
-              onclick="openImgModal('${imageUrl}')"
-              style="
-                display:block;
-                width:100%;
-                height:auto;
-                max-height:none;
+  <img
+    src="${imageUrl}"
+    onclick="openImgModal('${imageUrl}')"
+    style="
+      display:block;
+      width:100%;
+      height:auto;
+      max-height:none;
 
-                border-radius:12px;
-                border:1px solid #ddd;
-                cursor:pointer;
-              ">
+      border-radius:12px;
+      border:1px solid #ddd;
+      cursor:pointer;
+    ">
 
-          </div>
+</div>
 
-        `;
+`;
 
       }
 
@@ -2690,14 +2689,14 @@ function openAnnModal(a){
 <div style="
   margin:0;
 ">
-            <a
-              href="${url}"
-              target="_blank">
-              파일 열기
-            </a>
-          </div>
+  <a
+    href="${url}"
+    target="_blank">
+    파일 열기
+  </a>
+</div>
 
-        `;
+`;
 
       }
 
