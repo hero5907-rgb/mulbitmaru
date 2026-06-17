@@ -3912,3 +3912,29 @@ button:active{
 }
 
 
+
+/* ===== 전체화면보기 ===== */
+.duty-full-btn{
+
+  border:none;
+  background:#8CC63F;
+  color:#fff;
+
+  padding:12px 22px;
+
+  border-radius:14px;
+
+  font-size:15px;
+  font-weight:700;
+
+  box-shadow:
+    0 4px 14px rgba(0,0,0,.12);
+
+}
+
+.duty-full-btn:active{
+
+  transform:scale(.97);
+
+}
+

@@ -4135,3 +4135,25 @@ function nextDutyMonth(){
   renderDuty();
 
 }
+
+
+function openDutyZoom(){
+
+  const img = $("dutyImage");
+
+  if(!img || !img.src) return;
+
+  $("dutyZoomImage").src =
+    img.src;
+
+  $("dutyZoomModal").style.display =
+    "block";
+
+}
+
+function closeDutyZoom(){
+
+  $("dutyZoomModal").style.display =
+    "none";
+
+}
