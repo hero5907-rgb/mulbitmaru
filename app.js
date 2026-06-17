@@ -2635,7 +2635,7 @@ if(mime.includes("pdf")){
         style="
           display:block;
           width:100%;
-          height:320px;
+          height:180px;
           border:none;
           border-radius:8px;
           background:#fff;
@@ -2662,44 +2662,55 @@ if(mime.includes("pdf")){
   `;
 
 }
-      // 이미지
-      else if(mime.includes("image")){
+ // 이미지
+else if(mime.includes("image")){
 
-        html += `
+  const fileId =
+    (url.match(/\/d\/([^\/]+)/) || [])[1] || "";
 
-          <div style="
-            margin-bottom:20px;
-          ">
+  const imageUrl =
+    fileId
+      ? `https://drive.google.com/thumbnail?id=${fileId}&sz=w2000`
+      : url;
 
-            <div style="
-              font-weight:700;
-              margin-bottom:8px;
-            ">
-              🖼 ${name}
-            </div>
+  html += `
 
-            <img
-              src="${previewUrl}"
-              style="
-                width:100%;
-                border-radius:12px;
-                border:1px solid #ddd;
-              ">
+    <div style="
+      margin-bottom:20px;
+    ">
 
-            <div style="
-              margin-top:8px;
-            ">
-              <a
-                href="${url}"
-                target="_blank">
-                원본 보기
-              </a>
-            </div>
+      <div style="
+        font-weight:700;
+        margin-bottom:8px;
+      ">
+        🖼 ${name}
+      </div>
 
-          </div>
-        `;
+      <img
+        src="${imageUrl}"
+        onclick="openImgModal('${imageUrl}')"
+        style="
+          width:100%;
+          border-radius:12px;
+          border:1px solid #ddd;
+          cursor:pointer;
+          display:block;
+        ">
 
-      }
+      <div style="
+        margin-top:8px;
+      ">
+        <a
+          href="${url}"
+          target="_blank">
+          원본 보기
+        </a>
+      </div>
+
+    </div>
+  `;
+
+}
 
       // 기타 파일
       else{
