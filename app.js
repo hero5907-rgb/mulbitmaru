@@ -2551,12 +2551,64 @@ function closeImgModal(){
 
 
 function openAnnModal(a){
+
   const m = el("annModal");
   if (!m) return;
-  el("annModalTitle").textContent = a?.title || "";
+
+  el("annModalTitle").textContent =
+    a?.title || "";
+
   el("annModalMeta").textContent =
-  [formatDateTime(a?.date), a?.author].filter(Boolean).join(" · ");
-  el("annModalBody").textContent = a?.body || "";
+    [formatDateTime(a?.date), a?.author]
+      .filter(Boolean)
+      .join(" · ");
+
+  let html =
+    (a?.body || "")
+      .replace(/\n/g,"<br>");
+
+  const files =
+    String(a?.attachments || "")
+      .replace(/^"|"$/g,"")
+      .split("\n")
+      .map(v=>v.trim())
+      .filter(Boolean);
+
+  if(files.length){
+
+    html += `
+      <hr style="margin:16px 0;">
+      <div style="
+        font-weight:700;
+        margin-bottom:10px;
+      ">
+        📎 첨부파일
+      </div>
+    `;
+
+    files.forEach((url,idx)=>{
+
+      html += `
+        <div style="margin-bottom:8px;">
+          <a
+            href="${url}"
+            target="_blank"
+            style="
+              color:#2563eb;
+              text-decoration:none;
+              font-weight:600;
+            ">
+            📄 첨부파일 ${idx+1}
+          </a>
+        </div>
+      `;
+
+    });
+
+  }
+
+  el("annModalBody").innerHTML = html;
+
   m.hidden = false;
 
 }
