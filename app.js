@@ -4040,6 +4040,9 @@ let dutyIndex = 0;
 
 function openDutySchedule(){
 
+
+showLoading();
+
 api("getDutySchedules", {}, (res)=>{
 
 
@@ -4047,6 +4050,9 @@ api("getDutySchedules", {}, (res)=>{
 
 
   dutyList = res.list || [];
+
+
+hideLoading();
 
   if(!dutyList.length){
     alert("등록된 근무표가 없습니다.");
