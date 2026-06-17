@@ -2623,8 +2623,8 @@ function openAnnModal(a){
               style="
                 display:block;
                 width:100%;
-                height:70vh;
-                min-height:500px;
+                height:60vh;
+                min-height:350px;
                 border:none;
                 border-radius:12px;
                 background:#fff;
@@ -2652,7 +2652,7 @@ function openAnnModal(a){
 
 <div style="
   margin:0;
-  margin-bottom:-8px;
+  margin-bottom:-15px;
   padding:0;
 
   display:flex;
