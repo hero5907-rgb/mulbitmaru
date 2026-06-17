@@ -2582,21 +2582,11 @@ function openAnnModal(a){
         border:none;
         border-top:1px solid #eee;
       ">
-
-      <div style="
-        font-weight:700;
-        margin-bottom:4px;
-      ">
-        📎 첨부파일
-      </div>
     `;
 
     files.forEach(line=>{
 
       const parts = line.split("|");
-
-      const name =
-        parts[0] || "첨부파일";
 
       const mime =
         parts[1] || "";
@@ -2610,63 +2600,37 @@ function openAnnModal(a){
           "/preview?embedded=true"
         );
 
-  // PDF
-if(mime.includes("pdf")){
+      // PDF
+      if(mime.includes("pdf")){
 
-  html += `
+        html += `
 
-    <div style="
-      margin:2px 0;
-      padding:4px;
-      border:1px solid #e5e7eb;
-      border-radius:12px;
-      background:#fafafa;
-
-      display:flex;
-      flex-direction:column;
-      align-items:stretch;
-    ">
-
-      <div style="
-        font-weight:700;
-        margin-bottom:8px;
-      ">
-        📄 ${name}
-      </div>
-
-      <iframe
-        src="${previewUrl}"
-        style="
-          display:block;
-          width:100%;
-          height:400px;
-          border:none;
-          border-radius:8px;
-          background:#fff;
-          vertical-align:top;
-        ">
-      </iframe>
-
-      <div style="
-        text-align:right;
-        margin-top:6px;
-      ">
-        <a
-          href="${url}"
-          target="_blank"
-          style="
-            color:#2563eb;
-            font-size:13px;
+          <div style="
+            margin:0;
+            padding:0;
+            display:flex;
+            flex-direction:column;
           ">
-          원본 열기
-        </a>
-      </div>
 
-    </div>
+            <iframe
+              src="${previewUrl}"
+              style="
+                display:block;
+                width:100%;
+                height:70vh;
+                min-height:500px;
+                border:none;
+                border-radius:12px;
+                background:#fff;
+              ">
+            </iframe>
 
-  `;
+          </div>
 
-}
+        `;
+
+      }
+
       // 이미지
       else if(mime.includes("image")){
 
@@ -2681,19 +2645,9 @@ if(mime.includes("pdf")){
         html += `
 
           <div style="
-            margin:10px 0;
-            padding:8px;
-            border:1px solid #e5e7eb;
-            border-radius:12px;
-            background:#fafafa;
+            margin:0;
+            padding:0;
           ">
-
-            <div style="
-              font-weight:700;
-              margin-bottom:8px;
-            ">
-              🖼 ${name}
-            </div>
 
             <img
               src="${imageUrl}"
@@ -2705,17 +2659,6 @@ if(mime.includes("pdf")){
                 border:1px solid #ddd;
                 cursor:pointer;
               ">
-
-            <div style="
-              text-align:right;
-              margin-top:6px;
-            ">
-              <a
-                href="${url}"
-                target="_blank">
-                원본 보기
-              </a>
-            </div>
 
           </div>
 
@@ -2729,16 +2672,12 @@ if(mime.includes("pdf")){
         html += `
 
           <div style="
-            margin:10px 0;
-            padding:12px;
-            border:1px solid #e5e7eb;
-            border-radius:12px;
-            background:#fafafa;
+            margin:6px 0;
           ">
             <a
               href="${url}"
               target="_blank">
-              📎 ${name}
+              파일 열기
             </a>
           </div>
 
@@ -2755,7 +2694,6 @@ if(mime.includes("pdf")){
   m.hidden = false;
 
 }
-
 
 
 
