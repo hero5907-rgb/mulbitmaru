@@ -2585,7 +2585,7 @@ function openAnnModal(a){
 
       <div style="
         font-weight:700;
-        margin-bottom:14px;
+        margin-bottom:4px;
       ">
         📎 첨부파일
       </div>
@@ -2616,8 +2616,8 @@ if(mime.includes("pdf")){
   html += `
 
     <div style="
-      margin:10px 0;
-      padding:8px;
+      margin:2px 0;
+      padding:4px;
       border:1px solid #e5e7eb;
       border-radius:12px;
       background:#fafafa;
