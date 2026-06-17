@@ -3943,15 +3943,6 @@ button:active{
 
 /* 🔥 업무지시사항 팝업 스크롤 */
 
-#annModal .modal-card{
-  max-height:85vh;
-}
-
-#annModalBody{
-  max-height:65vh;
-  overflow-y:auto;
-  -webkit-overflow-scrolling:touch;
-}
 
 
 /* 🔥 공지 상세 전용 */
@@ -3959,12 +3950,10 @@ button:active{
 #annModal .modal-card{
   width:min(94vw,560px);
   max-height:85vh;
-  display:flex;
-  flex-direction:column;
 }
 
 #annModalBody{
-  flex:1;
   overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
   padding-right:4px;
 }
