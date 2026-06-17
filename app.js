@@ -2578,7 +2578,7 @@ function openAnnModal(a){
 
     html += `
       <hr style="
-        margin:16px 0;
+        margin:10px 0;
         border:none;
         border-top:1px solid #eee;
       ">
@@ -2616,27 +2616,29 @@ function openAnnModal(a){
             margin-bottom:20px;
           ">
 
-            <div style="
-              font-weight:700;
-              margin-bottom:8px;
-            ">
-              📄 ${name}
-            </div>
+<div style="
+  font-weight:700;
+  margin-bottom:6px;
+  margin-top:8px;
+">
+  📄 ${name}
+</div>
 
             <iframe
               src="${previewUrl}"
               style="
                 width:100%;
-                height:300px;
+                height:220px;
                 border:1px solid #ddd;
                 border-radius:12px;
                 background:#fff;
               ">
             </iframe>
 
-            <div style="
-              margin-top:8px;
-            ">
+<div style="
+  margin-top:6px;
+  text-align:right;
+">
               <a
                 href="${url}"
                 target="_blank">
