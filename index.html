@@ -796,20 +796,21 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no,
 </div>
 
 </div>
-
 <!-- 🔥 여기로 이동 (이 줄 통째로 복붙) -->
 <button id="btnScrollTop" class="scroll-top-btn" hidden>↑</button>
 
-
-
+</div> <!-- eventSheet 강제 종료 -->
 
 <div id="dutyZoomModal"
      style="
        display:none;
        position:fixed;
-       inset:0;
-       background:rgba(0,0,0,.92);
-       z-index:99999;
+       left:0;
+       top:0;
+       width:100vw;
+       height:100vh;
+       background:rgba(0,0,0,.95);
+       z-index:999999;
      "
      onclick="closeDutyZoom()">
 
@@ -830,14 +831,12 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no,
       left:50%;
       top:50%;
       transform:translate(-50%,-50%);
-      max-width:95%;
-      max-height:95%;
+      max-width:95vw;
+      max-height:95vh;
       border-radius:12px;
-    ">
+    " />
 
 </div>
 
 </body>
 </html>
-
-
