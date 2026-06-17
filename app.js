@@ -2577,11 +2577,11 @@ function openAnnModal(a){
   if(files.length){
 
     html += `
-      <hr style="
-        margin:0;
-        border:none;
-        border-top:1px solid #eee;
-      ">
+<hr style="
+  margin:0 0 4px 0;
+  border:none;
+  border-top:1px solid #eee;
+">
     `;
 
     files.forEach(line=>{
@@ -2605,17 +2605,18 @@ function openAnnModal(a){
 
         html += `
 
-          <div style="
-            margin:0;
-            padding:0;
+<div style="
+  margin:0;
+  margin-bottom:-135px;
+  padding:0;
 
-            display:flex;
-            flex-direction:column;
-            align-items:flex-start;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
 
-            height:fit-content;
-            min-height:0;
-          ">
+  height:fit-content;
+  min-height:0;
+">
 
             <iframe
               src="${previewUrl}"
@@ -2649,16 +2650,17 @@ function openAnnModal(a){
 
         html += `
 
-          <div style="
-            margin:0;
-            padding:0;
+<div style="
+  margin:0;
+  margin-bottom:-8px;
+  padding:0;
 
-            display:flex;
-            align-items:flex-start;
+  display:flex;
+  align-items:flex-start;
 
-            height:fit-content;
-            min-height:0;
-          ">
+  height:fit-content;
+  min-height:0;
+">
 
             <img
               src="${imageUrl}"
@@ -2685,9 +2687,9 @@ function openAnnModal(a){
 
         html += `
 
-          <div style="
-            margin:6px 0;
-          ">
+<div style="
+  margin:0;
+">
             <a
               href="${url}"
               target="_blank">
