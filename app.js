@@ -4142,22 +4142,13 @@ function openDutyZoom(){
   const img =
     document.getElementById("dutyImage");
 
-  if(!img || !img.src) return;
+  if(!img || !img.src){
+    return;
+  }
 
-  document.getElementById(
-    "dutyZoomImage"
-  ).src = img.src;
-
-  document.getElementById(
-    "dutyZoomModal"
-  ).style.display = "block";
-
-}
-
-function closeDutyZoom(){
-
-  document.getElementById(
-    "dutyZoomModal"
-  ).style.display = "none";
+  window.open(
+    img.src,
+    "_blank"
+  );
 
 }
