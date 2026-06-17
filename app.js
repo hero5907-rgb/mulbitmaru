@@ -4108,22 +4108,30 @@ function renderDuty(){
 
 function prevDutyMonth(){
 
-  if(dutyIndex <= 0){
-    alert("이전 근무표가 없습니다.");
-    return;
-  }
-
-  dutyIndex--;
-  renderDuty();
-}
-
-function nextDutyMonth(){
-
   if(dutyIndex >= dutyList.length - 1){
-    alert("다음 근무표가 없습니다.");
+
+    alert("이전 근무표가 없습니다.");
+
     return;
   }
 
   dutyIndex++;
+
   renderDuty();
+
+}
+
+function nextDutyMonth(){
+
+  if(dutyIndex <= 0){
+
+    alert("다음 근무표가 없습니다.");
+
+    return;
+  }
+
+  dutyIndex--;
+
+  renderDuty();
+
 }
