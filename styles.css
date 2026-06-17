@@ -3938,3 +3938,17 @@ button:active{
 
 }
 
+
+
+
+/* 🔥 업무지시사항 팝업 스크롤 */
+
+#annModal .modal-card{
+  max-height:85vh;
+}
+
+#annModalBody{
+  max-height:65vh;
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
+}

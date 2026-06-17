@@ -2627,7 +2627,7 @@ function openAnnModal(a){
               src="${previewUrl}"
               style="
                 width:100%;
-                height:500px;
+                height:300px;
                 border:1px solid #ddd;
                 border-radius:12px;
                 background:#fff;
