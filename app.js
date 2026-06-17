@@ -2604,120 +2604,121 @@ function openAnnModal(a){
       const url =
         parts[2] || "";
 
-const previewUrl =
-  url.replace(
-    "/view",
-    "/preview?embedded=true"
-  );
+      const previewUrl =
+        url.replace(
+          "/view",
+          "/preview?embedded=true"
+        );
 
-// PDF
-if(mime.includes("pdf")){
+      // PDF
+      if(mime.includes("pdf")){
 
-  html += `
+        html += `
 
-    <div style="
-      margin:10px 0 18px 0;
-      padding:12px;
-      border:1px solid #e5e7eb;
-      border-radius:12px;
-      background:#fafafa;
-    ">
-
-      <div style="
-        font-weight:700;
-        margin-bottom:8px;
-      ">
-        📄 ${name}
-      </div>
-
-<div style="
-  width:100%;
-  height:220px;
-  overflow:hidden;
-  border-radius:8px;
-  background:#fff;
-  border:1px solid #e5e7eb;
-">
-  <iframe
-    src="${previewUrl}"
-    style="
-      width:100%;
-      height:520px;
-      border:none;
-      margin-top:-90px;
-    ">
-  </iframe>
-</div>
-
-      <div style="
-        text-align:right;
-        margin-top:8px;
-      ">
-        <a
-          href="${url}"
-          target="_blank"
-          style="
-            color:#2563eb;
-            font-size:13px;
+          <div style="
+            margin:10px 0;
+            padding:8px;
+            border:1px solid #e5e7eb;
+            border-radius:12px;
+            background:#fafafa;
           ">
-          원본 열기
-        </a>
-      </div>
 
-    </div>
+            <div style="
+              font-weight:700;
+              margin-bottom:8px;
+            ">
+              📄 ${name}
+            </div>
 
-  `;
+            <iframe
+              src="${previewUrl}"
+              style="
+                display:block;
+                width:100%;
+                height:70vh;
+                min-height:500px;
+                border:none;
+                border-radius:8px;
+                background:#fff;
+              ">
+            </iframe>
 
-}
- // 이미지
-else if(mime.includes("image")){
+            <div style="
+              text-align:right;
+              margin-top:6px;
+            ">
+              <a
+                href="${url}"
+                target="_blank"
+                style="
+                  color:#2563eb;
+                  font-size:13px;
+                ">
+                원본 열기
+              </a>
+            </div>
 
-  const fileId =
-    (url.match(/\/d\/([^\/]+)/) || [])[1] || "";
+          </div>
 
-  const imageUrl =
-    fileId
-      ? `https://drive.google.com/thumbnail?id=${fileId}&sz=w2000`
-      : url;
+        `;
 
-  html += `
+      }
 
-    <div style="
-      margin-bottom:20px;
-    ">
+      // 이미지
+      else if(mime.includes("image")){
 
-      <div style="
-        font-weight:700;
-        margin-bottom:8px;
-      ">
-        🖼 ${name}
-      </div>
+        const fileId =
+          (url.match(/\/d\/([^\/]+)/) || [])[1] || "";
 
-      <img
-        src="${imageUrl}"
-        onclick="openImgModal('${imageUrl}')"
-        style="
-          width:100%;
-          border-radius:12px;
-          border:1px solid #ddd;
-          cursor:pointer;
-          display:block;
-        ">
+        const imageUrl =
+          fileId
+            ? `https://drive.google.com/thumbnail?id=${fileId}&sz=w3000`
+            : url;
 
-      <div style="
-        margin-top:8px;
-      ">
-        <a
-          href="${url}"
-          target="_blank">
-          원본 보기
-        </a>
-      </div>
+        html += `
 
-    </div>
-  `;
+          <div style="
+            margin:10px 0;
+            padding:8px;
+            border:1px solid #e5e7eb;
+            border-radius:12px;
+            background:#fafafa;
+          ">
 
-}
+            <div style="
+              font-weight:700;
+              margin-bottom:8px;
+            ">
+              🖼 ${name}
+            </div>
+
+            <img
+              src="${imageUrl}"
+              onclick="openImgModal('${imageUrl}')"
+              style="
+                display:block;
+                width:100%;
+                border-radius:12px;
+                border:1px solid #ddd;
+                cursor:pointer;
+              ">
+
+            <div style="
+              text-align:right;
+              margin-top:6px;
+            ">
+              <a
+                href="${url}"
+                target="_blank">
+                원본 보기
+              </a>
+            </div>
+
+          </div>
+
+        `;
+
+      }
 
       // 기타 파일
       else{
@@ -2725,7 +2726,11 @@ else if(mime.includes("image")){
         html += `
 
           <div style="
-            margin-bottom:12px;
+            margin:10px 0;
+            padding:12px;
+            border:1px solid #e5e7eb;
+            border-radius:12px;
+            background:#fafafa;
           ">
             <a
               href="${url}"
@@ -2747,6 +2752,9 @@ else if(mime.includes("image")){
   m.hidden = false;
 
 }
+
+
+
 
 function closeAnnModal(){
   const m = el("annModal");
