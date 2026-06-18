@@ -3968,3 +3968,39 @@ button:active{
   overflow-y:auto;
   padding-right:4px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+.duty-header{
+  position:relative;
+}
+
+.duty-add-btn{
+  position:absolute;
+  left:0;
+  top:50%;
+  transform:translateY(-50%);
+
+  width:36px;
+  height:36px;
+
+  border:none;
+  border-radius:50%;
+
+  background:#8dc63f;
+  color:#fff;
+
+  font-size:24px;
+  font-weight:700;
+
+  cursor:pointer;
+}

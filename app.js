@@ -4227,6 +4227,22 @@ dutyIndex =
 
     renderDuty();
 
+const btn = el("btnDutyAdd");
+
+if(btn){
+
+  btn.hidden =
+    !(
+      me &&
+      (
+        me.isAdmin === true ||
+        me.admin === true ||
+        me.role === "admin"
+      )
+    );
+}
+
+
   });
 
 }
@@ -4301,5 +4317,13 @@ function openDutyZoom(){
     img.src,
     "_blank"
   );
+
+}
+
+
+
+function openDutyAdmin(){
+
+  alert("근무표 등록창 준비중");
 
 }
