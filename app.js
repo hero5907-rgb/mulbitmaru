@@ -4225,6 +4225,17 @@ hideLoading();
 dutyIndex =
   idx >= 0 ? idx : 0;
 
+
+const btn = document.getElementById("btnDutyAdd");
+
+if(btn){
+  btn.hidden = !state.me?.isAdmin;
+}
+
+
+
+
+
     renderDuty();
 
 const btn = el("btnDutyAdd");
@@ -4246,6 +4257,9 @@ if(btn){
   });
 
 }
+
+
+
 
 function renderDuty(){
 

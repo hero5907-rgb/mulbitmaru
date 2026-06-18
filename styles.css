@@ -3986,21 +3986,30 @@ button:active{
 
 .duty-add-btn{
   position:absolute;
-  left:0;
-  top:50%;
-  transform:translateY(-50%);
+  left:18px;
+  top:18px;
 
-  width:36px;
-  height:36px;
+  width:34px;
+  height:34px;
 
   border:none;
   border-radius:50%;
 
-  background:#8dc63f;
-  color:#fff;
+  background:#f3f4f6;
+  color:#666;
 
   font-size:24px;
-  font-weight:700;
+  font-weight:300;
+  line-height:34px;
 
   cursor:pointer;
+
+  box-shadow:
+    0 2px 8px rgba(0,0,0,.08);
+
+  transition:.15s;
+}
+
+.duty-add-btn:hover{
+  background:#e5e7eb;
 }
