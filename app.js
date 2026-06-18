@@ -4488,3 +4488,34 @@ document.addEventListener("change",(e)=>{
   reader.readAsDataURL(file);
 
 });
+
+
+
+
+async function apiPost(action, params = {}) {
+
+  const { phone, code } =
+    getAuthSafe();
+
+  const res = await fetch(
+    API_URL,
+    {
+      method: "POST",
+
+      headers: {
+        "Content-Type":
+          "application/json"
+      },
+
+      body: JSON.stringify({
+        action,
+        phone,
+        code,
+        ...params
+      })
+    }
+  );
+
+  return await res.json();
+
+}
