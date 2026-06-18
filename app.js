@@ -4238,20 +4238,7 @@ if(btn){
 
     renderDuty();
 
-const btn = el("btnDutyAdd");
 
-if(btn){
-
-  btn.hidden =
-    !(
-      me &&
-      (
-        me.isAdmin === true ||
-        me.admin === true ||
-        me.role === "admin"
-      )
-    );
-}
 
 
   });
