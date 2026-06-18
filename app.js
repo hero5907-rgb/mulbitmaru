@@ -4376,13 +4376,20 @@ function saveDutySchedule(){
 
   showLoading();
 
-  google.script.run
+  api(
+    "uploadDutyImage",
+    {
+      base64Data:image
+    },
+    (url)=>{
 
-    .withSuccessHandler((url)=>{
-
-      google.script.run
-
-        .withSuccessHandler(()=>{
+      api(
+        "saveDutySchedule",
+        {
+          month,
+          imageUrl:url
+        },
+        ()=>{
 
           hideLoading();
 
@@ -4392,36 +4399,11 @@ function saveDutySchedule(){
 
           openDutySchedule();
 
-        })
-
-        .withFailureHandler((err)=>{
-
-          hideLoading();
-
-          alert(
-            "저장 실패 : " + err
-          );
-
-        })
-
-        .saveDutySchedule(
-          month,
-          url
-        );
-
-    })
-
-    .withFailureHandler((err)=>{
-
-      hideLoading();
-
-      alert(
-        "업로드 실패 : " + err
+        }
       );
 
-    })
-
-    .uploadDutyImage(image);
+    }
+  );
 
 }
 
