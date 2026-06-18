@@ -4324,13 +4324,77 @@ function openDutyZoom(){
 
 function openDutyAdmin(){
 
-  el("dutySheet").hidden = false;
+  const sheet = el("dutySheet");
+
+  // 🔥 이번달 자동 입력
+  const now = new Date();
+
+  el("dutyMonth").value =
+    `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,"0")}`;
+
+  sheet.hidden = false;
+
+  requestAnimationFrame(()=>{
+    sheet.classList.add("show");
+  });
 
 }
 
 
 function closeDutySheet(){
 
-  el("dutySheet").hidden = true;
+  const sheet = el("dutySheet");
+
+  sheet.classList.remove("show");
+
+  setTimeout(()=>{
+    sheet.hidden = true;
+  },250);
 
 }
+
+
+
+
+function saveDutySchedule(){
+
+  const month =
+    el("dutyMonth").value;
+
+  const image =
+    el("dutyPreview").src;
+
+  if(!month){
+    alert("월을 선택하세요.");
+    return;
+  }
+
+  if(!image){
+    alert("이미지를 선택하세요.");
+    return;
+  }
+
+  api(
+    "saveDutySchedule",
+    {
+      month,
+      image
+    },
+    (res)=>{
+
+      if(res && res.ok){
+
+        alert("저장 완료");
+
+      }else{
+
+        alert("저장 실패");
+
+      }
+
+    }
+  );
+}
+
+
+
