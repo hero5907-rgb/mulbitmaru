@@ -4433,11 +4433,55 @@ document.addEventListener("change",(e)=>{
 
   reader.onload = ()=>{
 
-    el("dutyPreview").src =
-      reader.result;
+    const img = new Image();
 
-    el("dutyPreview").style.display =
-      "block";
+    img.onload = ()=>{
+
+      const canvas =
+        document.createElement("canvas");
+
+      const maxWidth = 1200;
+
+      const scale =
+        Math.min(
+          1,
+          maxWidth / img.width
+        );
+
+      canvas.width =
+        img.width * scale;
+
+      canvas.height =
+        img.height * scale;
+
+      const ctx =
+        canvas.getContext("2d");
+
+      ctx.drawImage(
+        img,
+        0,
+        0,
+        canvas.width,
+        canvas.height
+      );
+
+      el("dutyPreview").src =
+        canvas.toDataURL(
+          "image/jpeg",
+          0.7
+        );
+
+      el("dutyPreview").style.display =
+        "block";
+
+      console.log(
+        "압축후 길이",
+        el("dutyPreview").src.length
+      );
+
+    };
+
+    img.src = reader.result;
 
   };
 
