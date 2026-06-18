@@ -4374,26 +4374,55 @@ function saveDutySchedule(){
     return;
   }
 
-  api(
-    "saveDutySchedule",
-    {
-      month,
-      image
-    },
-    (res)=>{
+  showLoading();
 
-      if(res && res.ok){
+  google.script.run
 
-        alert("저장 완료");
+    .withSuccessHandler((url)=>{
 
-      }else{
+      google.script.run
 
-        alert("저장 실패");
+        .withSuccessHandler(()=>{
 
-      }
+          hideLoading();
 
-    }
-  );
+          alert("저장 완료");
+
+          closeDutySheet();
+
+          openDutySchedule();
+
+        })
+
+        .withFailureHandler((err)=>{
+
+          hideLoading();
+
+          alert(
+            "저장 실패 : " + err
+          );
+
+        })
+
+        .saveDutySchedule(
+          month,
+          url
+        );
+
+    })
+
+    .withFailureHandler((err)=>{
+
+      hideLoading();
+
+      alert(
+        "업로드 실패 : " + err
+      );
+
+    })
+
+    .uploadDutyImage(image);
+
 }
 
 
