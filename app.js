@@ -4222,8 +4222,8 @@ hideLoading();
         x => String(x.month) === currentMonth
       );
 
-    dutyIndex =
-      idx >= 0 ? idx : dutyList.length - 1;
+dutyIndex =
+  idx >= 0 ? idx : 0;
 
     renderDuty();
 
