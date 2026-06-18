@@ -4398,3 +4398,28 @@ function saveDutySchedule(){
 
 
 
+document.addEventListener("change",(e)=>{
+
+  if(e.target?.id !== "dutyFile") return;
+
+  const file = e.target.files?.[0];
+
+  if(!file) return;
+
+  window.dutyFileSelected = true;
+
+  const reader = new FileReader();
+
+  reader.onload = ()=>{
+
+    el("dutyPreview").src =
+      reader.result;
+
+    el("dutyPreview").style.display =
+      "block";
+
+  };
+
+  reader.readAsDataURL(file);
+
+});
