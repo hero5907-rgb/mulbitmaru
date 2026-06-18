@@ -3973,7 +3973,39 @@ button{
 
 
 
+/* ===== 근무표 헤더만 별도 ===== */
 
+#screenCeremony .intro-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+#screenCeremony #btnDutyAdd{
+  position:static !important;
+  transform:none !important;
+
+  width:32px;
+  height:32px;
+  border-radius:50%;
+  border:none;
+
+  background:rgba(0,0,0,.05);
+  font-size:16px;
+}
+
+#screenCeremony .intro-close{
+  position:static !important;
+  transform:none !important;
+
+  width:32px;
+  height:32px;
+  border-radius:50%;
+  border:none;
+
+  background:rgba(0,0,0,.05);
+  font-size:16px;
+}
 
 
 
