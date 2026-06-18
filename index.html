@@ -818,5 +818,68 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no,
 
 </div> <!-- eventSheet 강제 종료 -->
 
+
+<div id="dutySheet" class="event-sheet" hidden>
+
+  <div class="sheet-backdrop"
+       onclick="closeDutySheet()"></div>
+
+  <div class="sheet-card">
+
+    <div class="event-sheet-header">
+
+      <button class="btn-cancel"
+              onclick="closeDutySheet()">
+        취소
+      </button>
+
+      <div class="title">
+        근무표
+      </div>
+
+      <button class="btn-save"
+              onclick="saveDutySheet()">
+        저장
+      </button>
+
+    </div>
+
+    <div class="event-sheet-body">
+
+      <input
+        id="dutyMonth"
+        class="ev-input"
+        type="month">
+
+      <input
+        id="dutyFile"
+        class="ev-input"
+        type="file"
+        accept="image/*">
+
+      <img
+        id="dutyPreview"
+        style="
+          display:none;
+          width:100%;
+          border-radius:12px;
+          margin-top:12px;
+        ">
+
+    </div>
+
+    <div class="event-sheet-footer">
+
+      <button class="btn-cancel"
+              onclick="closeDutySheet()">
+        닫기
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
 </body>
 </html>

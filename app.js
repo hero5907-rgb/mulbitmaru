@@ -4322,9 +4322,15 @@ function openDutyZoom(){
 }
 
 
-
 function openDutyAdmin(){
 
-  alert("근무표 등록창 준비중");
+  el("dutySheet").hidden = false;
+
+}
+
+
+function closeDutySheet(){
+
+  el("dutySheet").hidden = true;
 
 }
