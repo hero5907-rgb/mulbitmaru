@@ -4381,17 +4381,28 @@ function saveDutySchedule(){
     {
       base64Data:image
     },
-    (url)=>{
+    (res)=>{
+
+      console.log("업로드 응답", res);
+
+      if(!res || !res.ok){
+
+        hideLoading();
+        alert("이미지 업로드 실패");
+        return;
+      }
 
       api(
         "saveDutySchedule",
         {
           month,
-          imageUrl:url
+          image: res.url
         },
-        ()=>{
+        (saveRes)=>{
 
           hideLoading();
+
+          console.log("저장 응답", saveRes);
 
           alert("저장 완료");
 
@@ -4406,7 +4417,6 @@ function saveDutySchedule(){
   );
 
 }
-
 
 
 document.addEventListener("change",(e)=>{
