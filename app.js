@@ -4356,7 +4356,7 @@ function closeDutySheet(){
 
 
 
-function saveDutySchedule(){
+async function saveDutySchedule(){
 
   const month =
     el("dutyMonth").value;
@@ -4374,47 +4374,61 @@ function saveDutySchedule(){
     return;
   }
 
-  showLoading();
+  try{
 
-  api(
-    "uploadDutyImage",
-    {
-      base64Data:image
-    },
-    (res)=>{
+    showLoading();
 
-      console.log("업로드 응답", res);
-
-      if(!res || !res.ok){
-
-        hideLoading();
-        alert("이미지 업로드 실패");
-        return;
-      }
-
-      api(
-        "saveDutySchedule",
+    const uploadRes =
+      await apiPost(
+        "uploadDutyImage",
         {
-          month,
-          image: res.url
-        },
-        (saveRes)=>{
-
-          hideLoading();
-
-          console.log("저장 응답", saveRes);
-
-          alert("저장 완료");
-
-          closeDutySheet();
-
-          openDutySchedule();
-
+          base64Data:image
         }
       );
 
+    if(!uploadRes.ok){
+
+      hideLoading();
+
+      alert("업로드 실패");
+
+      return;
     }
-  );
+
+    const saveRes =
+      await apiPost(
+        "saveDutySchedule",
+        {
+          month,
+          image: uploadRes.url
+        }
+      );
+
+    hideLoading();
+
+    if(saveRes.ok){
+
+      alert("저장 완료");
+
+      closeDutySheet();
+
+      openDutySchedule();
+
+    }else{
+
+      alert("저장 실패");
+
+    }
+
+  }catch(err){
+
+    hideLoading();
+
+    console.error(err);
+
+    alert("서버 오류");
+
+  }
 
 }
 
