@@ -481,27 +481,36 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no,
 
   <div class="card">
 
-    <div class="intro-header">
-      <div class="card-title">근무표</div>
-      <button class="intro-close" onclick="popNav()">✕</button>
-    </div>
+<div class="intro-header">
 
+  <button id="btnDutyAdd"
+          class="intro-close"
+          onclick="openDutyAdmin()">
+    +
+  </button>
+
+  <div class="card-title">
+    근무표
+  </div>
+
+  <button class="intro-close"
+          onclick="popNav()">
+    ✕
+  </button>
+
+</div>
 
 <div class="duty-header">
 
-<button id="btnDutyAdd"
-        class="duty-add-btn"
-        onclick="openDutyAdmin()">
-  +
-</button>
-
-  <button class="duty-arrow" onclick="prevDutyMonth()">
+  <button class="duty-arrow"
+          onclick="prevDutyMonth()">
     ‹
   </button>
 
   <h2 id="dutyMonthTitle"></h2>
 
-  <button class="duty-arrow" onclick="nextDutyMonth()">
+  <button class="duty-arrow"
+          onclick="nextDutyMonth()">
     ›
   </button>
 

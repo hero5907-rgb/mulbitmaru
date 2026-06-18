@@ -2381,9 +2381,9 @@ button{
   transition:transform .05s ease;
 }
 
-button:active{
+/*button:active{
   transform:scale(.95);
-}
+}*/
 
 
 
@@ -3979,72 +3979,3 @@ button:active{
 
 
 
-
-.duty-header{
-  position:relative;
-}
-
-.duty-add-btn{
-  position:absolute;
-  left:18px;
-  top:18px;
-
-  width:34px;
-  height:34px;
-
-  border:none;
-  border-radius:50%;
-
-  background:#f3f4f6;
-  color:#666;
-
-  font-size:24px;
-  font-weight:300;
-  line-height:34px;
-
-  cursor:pointer;
-
-  box-shadow:
-    0 2px 8px rgba(0,0,0,.08);
-
-  transition:.15s;
-}
-
-.duty-add-btn:hover{
-  background:#e5e7eb;
-}
-
-
-
-/* ===== 근무표 + 버튼 ===== */
-
-#btnDutyAdd{
-  position:absolute;
-  top:18px;
-  left:18px;
-
-  width:36px;
-  height:36px;
-
-  border:none;
-  border-radius:50%;
-
-  background:#fff;
-  color:#666;
-
-  font-size:24px;
-  font-weight:300;
-  line-height:36px;
-
-  box-shadow:0 4px 12px rgba(0,0,0,.12);
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  z-index:20;
-}
-
-#btnDutyAdd:active{
-  transform:scale(.95);
-}
