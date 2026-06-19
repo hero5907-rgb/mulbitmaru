@@ -825,58 +825,41 @@ function renderBylawsView() {
 
 function openManualList(){
 
-  api(
-    "getManualList",
-    {},
-    (res)=>{
+  pushNav("text");
 
-      const list =
-        res.list || [];
+  el("textTitle").textContent =
+    "업무메뉴얼";
 
-      pushNav("text");
+  el("btnBylawsPdf").hidden = true;
 
-      el("textTitle").textContent =
-        "업무메뉴얼";
+  const list =
+    window.manualList || [];
 
-      el("btnBylawsPdf").hidden = true;
+  if(!list.length){
 
-      if(!list.length){
+    el("textBody").innerHTML =
+      "등록된 메뉴얼이 없습니다.";
 
-        el("textBody").innerHTML =
-          "등록된 메뉴얼이 없습니다.";
+    return;
+  }
 
-        return;
-      }
-
-      el("textBody").innerHTML =
-        list.map((m,i)=>`
-<div
-  onclick="openManual(${i})"
-  style="
-    padding:20px;
-    margin-bottom:12px;
-    border:1px solid #e5e7eb;
-    border-radius:16px;
-    cursor:pointer;
-    background:#fff;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    min-height:70px;
-    font-weight:700;
-    font-size:18px;
-  ">
-  ${m.title}
-</div>
-        `).join("");
-
-      window.manualList = list;
-
-    }
-  );
+  el("textBody").innerHTML =
+    list.map((m,i)=>`
+      <div
+        onclick="openManual(${i})"
+        style="
+          padding:14px;
+          margin:8px 0;
+          border:1px solid #e5e7eb;
+          border-radius:12px;
+          background:#fff;
+          cursor:pointer;
+        ">
+        ${m.title}
+      </div>
+    `).join("");
 
 }
-
 
 function openManual(idx){
 
@@ -1286,6 +1269,7 @@ if (nameBox && state.me?.name) {
    state.members = onlyRealMembers(json.members || []).map((m) => ({ ...m, phone: normalizePhone(m.phone) }));
 
     state.announcements = json.announcements || [];
+   state.manualList = json.manualList || [];
 
     // ✅ 관리자 버튼: 로그인 성공 시에만 표시/숨김 결정
     const tileAdmin = el("tileAdmin");
