@@ -820,6 +820,85 @@ function renderBylawsView() {
 
 }
 
+
+
+
+function openManualList(){
+
+  api(
+    "getManualList",
+    {},
+    (list)=>{
+
+      pushNav("text");
+
+      el("textTitle").textContent =
+        "업무메뉴얼";
+
+      el("btnBylawsPdf").hidden = true;
+
+      if(!list || !list.length){
+
+        el("textBody").innerHTML =
+          "등록된 메뉴얼이 없습니다.";
+
+        return;
+      }
+
+      el("textBody").innerHTML =
+        list.map((m,i)=>`
+          <div
+            onclick="openManual(${i})"
+            style="
+              padding:14px;
+              margin-bottom:10px;
+              border:1px solid #e5e7eb;
+              border-radius:12px;
+              cursor:pointer;
+              background:#fff;
+            ">
+            ${m.title}
+          </div>
+        `).join("");
+
+      window.manualList = list;
+
+    }
+  );
+
+}
+
+function openManual(idx){
+
+  const m =
+    window.manualList[idx];
+
+  if(!m) return;
+
+  el("textTitle").textContent =
+    m.title;
+
+  const pdfBtn =
+    el("btnBylawsPdf");
+
+  if(m.pdf){
+
+    pdfBtn.hidden = false;
+    pdfBtn.href = m.pdf;
+
+  }else{
+
+    pdfBtn.hidden = true;
+
+  }
+
+  el("textBody").innerHTML =
+    `<div style="white-space:pre-wrap;line-height:1.6;">
+      ${esc(m.text)}
+    </div>`;
+}
+
+
 // ✅ 회원여부 필터: isMember === false 인 사람은 회원명부/인원수에서 제외
 function onlyRealMembers(arr){
   const list = Array.isArray(arr) ? arr : [];
@@ -1413,11 +1492,11 @@ if (target === "members") {
         if (el("textBody")) el("textBody").textContent = state.settings?.purpose || "내용 준비중";
         // pdfBtn은 위에서 이미 hidden=true 처리됨
 
-      } else if (target === "bylaws") {
-  pushNav("text");
-  if (el("textTitle")) el("textTitle").textContent = "회칙";
-  renderBylawsView();
-} 
+else if (target === "bylaws") {
+
+  openManualList();
+
+}
 else if (target === "events") {
   pushNav("events");
   loadEvents();
