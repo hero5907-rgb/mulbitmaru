@@ -848,10 +848,10 @@ function openManualList(){
       <div
         onclick="openManual(${i})"
         style="
-          padding:14px;
-          margin:8px 0;
+          padding:10px 14px;
+          margin:4px 0;
           border:1px solid #e5e7eb;
-          border-radius:12px;
+          border-radius:10px;
           background:#fff;
           cursor:pointer;
         ">
@@ -867,6 +867,19 @@ function openManual(idx){
     state.manualList[idx];
 
   if(!m) return;
+
+
+
+  state.manualOpened = true;
+
+  history.pushState(
+    { manual:true },
+    "",
+    location.href
+  );
+
+
+
 
   el("textTitle").textContent =
     m.title;
@@ -1959,6 +1972,23 @@ document.addEventListener("DOMContentLoaded", init);
 
 
 window.addEventListener("popstate", () => {
+
+
+// 🔥 메뉴얼 상세 보고있는 상태
+if(state.manualOpened){
+
+  state.manualOpened = false;
+
+  openManualList();
+
+  history.pushState(
+    { app:true },
+    "",
+    location.href
+  );
+
+  return;
+}
 
 
 
