@@ -850,18 +850,24 @@ function openManualList(){
 
       el("textBody").innerHTML =
         list.map((m,i)=>`
-          <div
-            onclick="openManual(${i})"
-            style="
-              padding:14px;
-              margin-bottom:10px;
-              border:1px solid #e5e7eb;
-              border-radius:12px;
-              cursor:pointer;
-              background:#fff;
-            ">
-            ${m.title}
-          </div>
+<div
+  onclick="openManual(${i})"
+  style="
+    padding:20px;
+    margin-bottom:12px;
+    border:1px solid #e5e7eb;
+    border-radius:16px;
+    cursor:pointer;
+    background:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    min-height:70px;
+    font-weight:700;
+    font-size:18px;
+  ">
+  ${m.title}
+</div>
         `).join("");
 
       window.manualList = list;
