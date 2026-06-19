@@ -823,9 +823,11 @@ function renderBylawsView() {
 
 
 
-function openManualList(){
+function openManualList(noPush){
 
-  pushNav("text");
+  if(!noPush){
+    pushNav("text");
+  }
 
   el("textTitle").textContent =
     "업무메뉴얼";
@@ -892,14 +894,14 @@ function openManual(idx){
     pdfHtml = `
 
       <div style="
-        margin-top:20px;
+        margin-top:16px;
       ">
 
         <iframe
           src="${m.pdf}"
           style="
             width:100%;
-            height:75vh;
+            height:500px;
             border:none;
             border-radius:12px;
             background:#fff;
@@ -918,13 +920,18 @@ function openManual(idx){
 
   el("textBody").innerHTML = `
 
-    <div style="
-      white-space:pre-wrap;
-      line-height:1.8;
-      font-size:16px;
-    ">
-      ${esc(m.text)}
-    </div>
+    ${m.text ? `
+
+      <div style="
+        white-space:pre-wrap;
+        line-height:1.7;
+        font-size:16px;
+        margin-bottom:16px;
+      ">
+        ${esc(m.text)}
+      </div>
+
+    ` : ""}
 
     ${pdfHtml}
 
@@ -2005,7 +2012,7 @@ if(state.manualOpened){
 
   state.manualOpened = false;
 
-  openManualList();
+  openManualList(true);
 
   history.pushState(
     { app:true },
