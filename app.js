@@ -828,7 +828,10 @@ function openManualList(){
   api(
     "getManualList",
     {},
-    (list)=>{
+    (res)=>{
+
+      const list =
+        res.list || [];
 
       pushNav("text");
 
@@ -837,7 +840,7 @@ function openManualList(){
 
       el("btnBylawsPdf").hidden = true;
 
-      if(!list || !list.length){
+      if(!list.length){
 
         el("textBody").innerHTML =
           "등록된 메뉴얼이 없습니다.";
@@ -867,6 +870,7 @@ function openManualList(){
   );
 
 }
+
 
 function openManual(idx){
 
