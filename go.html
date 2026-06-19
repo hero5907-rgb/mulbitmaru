@@ -121,12 +121,12 @@ body{
 <button
  class="btn android"
  onclick="installAndroid()">
-🤖 안드로이드 설치 </button>
+안드로이드 설치 </button>
 
 <button
  class="btn ios"
  onclick="installIOS()">
-🍎 아이폰 설치 </button>
+아이폰 설치 </button>
 
   <div class="notice" id="browserNotice"></div>
 
@@ -151,14 +151,8 @@ function installAndroid(){
 
   alert(
 `1. 크롬으로 이동합니다.
-
 2. 앱이 열리면
-
-우측 상단 ⋮
-
-→ 앱 설치
-
-를 눌러 설치하세요.`
+상단 → 앱 설치를 눌러 설치하세요.`
   );
 
   const u = new URL(APP_URL);
@@ -193,14 +187,9 @@ function installIOS(){
 `주소가 복사되었습니다.
 
 1. Safari 실행
-
 2. 주소 붙여넣기
-
-3. 공유버튼(□↑)
-
-4. 홈 화면에 추가
-
-를 선택하세요.`
+3. 공유버튼(↑)
+4. 홈 화면에 추가하세요.`
   );
 
 }
