@@ -868,8 +868,6 @@ function openManual(idx){
 
   if(!m) return;
 
-
-
   state.manualOpened = true;
 
   history.pushState(
@@ -878,19 +876,39 @@ function openManual(idx){
     location.href
   );
 
-
-
-
   el("textTitle").textContent =
     m.title;
 
   const pdfBtn =
     el("btnBylawsPdf");
 
+  let pdfHtml = "";
+
   if(m.pdf){
 
     pdfBtn.hidden = false;
     pdfBtn.href = m.pdf;
+
+    pdfHtml = `
+
+      <div style="
+        margin-top:20px;
+      ">
+
+        <iframe
+          src="${m.pdf}"
+          style="
+            width:100%;
+            height:75vh;
+            border:none;
+            border-radius:12px;
+            background:#fff;
+          ">
+        </iframe>
+
+      </div>
+
+    `;
 
   }else{
 
@@ -898,12 +916,20 @@ function openManual(idx){
 
   }
 
-  el("textBody").innerHTML =
-    `<div style="white-space:pre-wrap;line-height:1.6;">
-      ${esc(m.text)}
-    </div>`;
-}
+  el("textBody").innerHTML = `
 
+    <div style="
+      white-space:pre-wrap;
+      line-height:1.8;
+      font-size:16px;
+    ">
+      ${esc(m.text)}
+    </div>
+
+    ${pdfHtml}
+
+  `;
+}
 
 // ✅ 회원여부 필터: isMember === false 인 사람은 회원명부/인원수에서 제외
 function onlyRealMembers(arr){
