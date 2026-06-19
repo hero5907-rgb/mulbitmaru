@@ -833,7 +833,7 @@ function openManualList(){
   el("btnBylawsPdf").hidden = true;
 
   const list =
-    window.manualList || [];
+    state.manualList || [];
 
   if(!list.length){
 
@@ -864,7 +864,7 @@ function openManualList(){
 function openManual(idx){
 
   const m =
-    window.manualList[idx];
+    state.manualList[idx];
 
   if(!m) return;
 
