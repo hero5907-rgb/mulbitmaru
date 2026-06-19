@@ -1487,14 +1487,19 @@ if (target === "members") {
   const btn = el("btnAnnRefresh");
   if (btn) btn.onclick = reloadAnnouncements;
 }else if (target === "purpose") {
-        pushNav("text");
-        if (el("textTitle")) el("textTitle").textContent = "목적";
-        if (el("textBody")) el("textBody").textContent = state.settings?.purpose || "내용 준비중";
-        // pdfBtn은 위에서 이미 hidden=true 처리됨
 
-else if (target === "bylaws") {
+    pushNav("text");
 
-  openManualList();
+    if (el("textTitle"))
+      el("textTitle").textContent = "목적";
+
+    if (el("textBody"))
+      el("textBody").textContent =
+        state.settings?.purpose || "내용 준비중";
+
+} else if (target === "bylaws") {
+
+    openManualList();
 
 }
 else if (target === "events") {
