@@ -897,7 +897,7 @@ pushNav("text");
           src="${m.pdf}"
           style="
             width:100%;
-            height:500px;
+            height:85vh;
             border:none;
             border-radius:12px;
             background:#fff;
