@@ -872,11 +872,7 @@ function openManual(idx){
 
   state.manualOpened = true;
 
-  history.pushState(
-    { manual:true },
-    "",
-    location.href
-  );
+pushNav("text");
 
   el("textTitle").textContent =
     m.title;
@@ -2014,11 +2010,7 @@ if(state.manualOpened){
 
   openManualList(true);
 
-  history.pushState(
-    { app:true },
-    "",
-    location.href
-  );
+  popNav();
 
   return;
 }
